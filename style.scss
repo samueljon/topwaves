@@ -2661,6 +2661,15 @@ header.navbar {
 /*------------------------------
 	Footer
 ------------------------------*/
+.main-footer::before {
+  background: url("../images/footer-wave.svg") repeat-x;
+  height: 16px;
+  width: 100%;
+  position: absolute;
+  top: -16px;
+  left: 0;
+  content: "";
+}
 
 #footer {
   margin: 100px auto 0;

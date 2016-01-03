@@ -1,0 +1,444 @@
+/*------------------------------
+	Header
+------------------------------*/
+
+body.show-nav {
+	@media(max-width: 767px) {
+		left: -75%;
+	}
+}
+
+header.navbar {
+	position: static;
+	margin: 0;
+	border-radius: 0;
+	border: 0;
+	color: #fff;
+	text-align: center;
+	background-color: #333;
+	transition: all 0.4s;
+	@media(min-width: 768px) {
+		text-align: left;
+	}
+	#login-bar-header {
+		font-size: 0.8em;
+		font-weight: 700;
+		text-align: center;
+		@media(min-width: 768px) {
+			text-align: right;
+		}
+		span {
+			display: inline-block;
+		}
+		a {
+			display: inline-block;
+			padding: 0 1em;
+			line-height: 2.5;
+			color: #eee;
+			opacity: 0.5;
+			background-color: rgba( 255, 255, 255, 0.1 );
+			&:hover {
+				opacity: 1;
+			}
+			.desktop {
+				display: none;
+			}
+			@media(min-width:768px) {
+				.desktop {
+					display: block;
+				}
+				.mobile {
+					display: none;
+				}
+			}
+		}
+		.badge {
+			margin-left: 5px;
+			padding: 0;
+			height: 20px;
+			width: 20px;
+			line-height: 20px;
+			border-radius: 50%;
+		}
+	}
+	.container {
+		.navbar-collapse {
+			max-height: none;
+			margin-top: 25px;
+			padding: 0;
+			border: none;
+			border-top: 2px solid rgba( 255, 255, 255, 0.1 );
+			-webkit-box-shadow: none;
+			box-shadow: none;
+			background-color: #333;
+			&.in {
+				overflow-y: visible;
+			}
+			@media(max-width: 767px) {
+				position: absolute;
+				z-index: 1001;
+				top: 0;
+				left: 100%;
+				width: 75%;
+				height: 100% !important;
+				margin: 0;
+				text-align: left;
+			}
+		}
+	}
+	.navbar-header {
+		display: block;
+		width: 100%;
+		margin: 0;
+		padding: 20px 0 0;
+		line-height: 1;
+		@media(min-width: 768px) {
+			padding: 25px 0 0;
+		}
+		.navbar-toggle {
+			position: absolute;
+			right: 15px;
+			margin: 3px 0 0 30px;
+			padding: 0;
+			border: none;
+			border-radius: 0;
+			@media(min-width: 768px) {
+				position: relative;
+			}
+			&:hover {
+				.icon-bar {
+					background-color: #fff;
+				}
+			}
+			.icon-bar {
+				width: 30px;
+				height: 4px;
+				margin: 0 0 5px;
+				border-radius: 0;
+				background-color: #ccc;
+				transition:  all 0.3s;
+			}
+		}
+		.navbar-contact-details {
+			margin: 25px 0;
+			@media(min-width: 768px) {
+				margin: 0;
+				text-align: right;
+			}
+		}
+	}
+	.container {
+		.navbar-brand {
+			float: none;
+			height: auto;
+			margin: 0;
+			padding: 0;
+			line-height: 1;
+			@media(min-width: 768px) {
+				float: left;
+			}
+			a {
+				font-weight: 300;
+				opacity: 1;
+				span {
+					font-size: 2em;
+				}
+			}
+			img {
+				opacity: 0;
+				height: auto;
+			}
+			.tagline {
+				margin: 1em 0;
+				opacity: 0.8;
+				font-size: 0.8em;
+			}
+		}
+	}
+	// Theme Option: Navigation Right
+	&.nav-right {
+		.navbar-header {
+			padding: 25px 0 0;
+			border: none;
+		}
+		.container .navbar-brand {
+			padding-bottom: 25px;
+			@media(min-width: 768px) {
+				padding-bottom: 0;
+				a {
+					min-height: 80px;
+					line-height: 80px;
+				}
+			}
+		}
+		.navbar-collapse {
+			margin-top: 0;
+			border: none;
+		}
+		.navbar-nav, nav > div {
+			@media(min-width: 768px) {
+				float: right;
+				> ul {
+					margin-top: 10px;
+				}
+			}
+			> ul > li > a {
+				margin-top: 0px;
+				line-height: 70px;
+				&::after {
+					line-height: 70px !important;
+				}
+			}
+		}
+		.navbar-contact-details {
+			@media(min-width: 768px) {
+				line-height: inherit;
+				float: left;
+			}
+			div {
+				margin: 0 !important;
+				display: inline-block;
+				font-size: 1em !important;
+				opacity: 0.5 !important;
+				line-height: 2.5;
+				text-align: left;
+				&.separator {
+					padding: 0 5px;
+				}
+			}
+		}
+	}
+	.navbar-phone-number {
+		font-size: 1.3em;
+	}
+	.navbar-email {
+		margin-top: 5px;
+		font-size: 1em;
+		opacity: 0.5;
+		a {
+			color: inherit;
+		}
+	}
+	.navbar-nav, nav > div {
+		float: none;
+		margin: 0;
+		font-weight: 700;
+		> ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			> li {
+				position: relative;
+				line-height: 1;
+				margin-right: 1px;
+				@media(min-width: 768px) {
+					float: left;
+				}
+				a {
+					position: relative;
+					display: block;
+					padding-left: 15px;
+					line-height: 50px;
+					@media(min-width: 768px) {
+						padding: 0 20px;
+						line-height: 70px;
+					}
+				}
+				&.menu-item-has-children, &.menu-item-language {
+					position: relative;
+					&:hover {
+						.sub-menu {
+							@media(min-width: 768px) {
+								//display: block;
+								visibility: visible;
+								opacity: 1;
+								top: 100%;
+								transform: translate3d( 0, 0, 0 );
+							}
+						}
+					}
+					.sub-menu.show {
+						height:	auto;
+						display: block;
+						visibility: visible;
+						opacity: 1;
+					}
+					> a {
+						opacity: 1;
+					}
+					a {
+						padding-right: 30px;
+						&::after {
+							position: absolute;
+							top: 0;
+							right: 6px;
+							font-family: FontAwesome;
+							line-height: 70px;
+							color: darken( $color-muted, 20% );
+							content: "\F107";
+							transition:  all 0.2s;
+						}
+					}
+				}
+				.sub-menu {
+					height: 0;
+					width: 100%;
+					//display: none;
+					visibility: hidden;
+					opacity: 0;
+					list-style: none;
+					padding: 0;
+					font-size: 0.9em;
+					background-color: #fff;
+					transition: all 0.2s;
+					@media(min-width: 768px) {
+						height: auto;
+						width: auto;
+						min-width: 100%;
+						z-index: 1001;
+						position: absolute;
+						top: 90%;
+						left: 0;
+						margin: 0;
+						transform: translate3d( 0, 20px, 0 );
+					}
+					li {
+						min-width: 100% !important;
+						white-space: nowrap;
+						transition: all 0.2s;
+						a {
+							display: block;
+							height: auto;
+							line-height: 50px;
+							color: $color-text;
+							@media(min-width: 768px) {
+								padding: 0 30px;
+							}
+							&::after {
+								display: none;
+							}
+						}
+						&.menu-item-has-children {
+							position: relative;
+							> a {
+								opacity: 1;
+								text-transform: uppercase;
+								@media(min-width: 768px) {
+									text-transform: none;
+								}
+							}
+							a {
+								@media(min-width: 768px) {
+									padding-right: 40px;
+									&::after {
+										display: block;
+										position: absolute;
+										top: 0;
+										right: 18px;
+										font-family: FontAwesome;
+										line-height: 50px;
+										content: "\F105";
+										transition: all 0.2s;
+									}
+								}
+							}
+							&:hover {
+								.sub-menu {
+									visibility: visible;
+									opacity: 1;
+									@media(min-width: 768px) {
+										top: 0;
+									}
+								}
+								a::after {
+									color: #fff;
+								}
+							}
+							.sub-menu {								
+								transition: all 0.2s;
+								@media(min-width: 768px) {
+									position: absolute;
+									width: auto;
+									min-width: 100%;
+									z-index: 1001;
+									position: absolute;
+									top: -10%;
+									left: 100%;
+									visibility: hidden;
+									opacity: 0;
+									margin: 0;
+									font-size: 1em;
+								}
+								a {
+									&::after {
+										display: none;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.sub-menu li {
+	&:hover, &.current-menu-item {
+		background-color: $color-primary;
+		> a {
+			color: #fff !important;
+			&::after {
+				opacity: 0.8;
+			}
+		}
+	}
+}
+
+.header-margin {
+	margin-top: 15px;
+	@media(min-width: 768px) {
+		margin-top: 50px;
+		text-align: left;
+	}
+}
+
+/* Theme Option: Header > Enable Fixed/Scrolling Header
+-------------------------*/
+.fixed-header {
+	@media(max-width: 767px) {
+		margin: 0 !important;
+	}
+	@media(min-width: 768px) {
+		&.admin-bar header.navbar {
+			top: 32px;
+		}
+		header.navbar {
+			position: fixed;
+			z-index: 1049; // underneath modal (z-index: 1050)
+			width: 100%;
+			top: 0;
+			&.mini {
+				opacity: 0.98;
+				.navbar-header {
+					border: none;
+				}
+				.navbar-nav {
+					transition: all 0.5s;
+					height: 0 !important;
+				}
+				&.nav-right {
+					.navbar-header {
+						padding: 0;
+					}
+					.navbar-nav {
+						height: auto !important;
+					}
+				}
+			}
+		}
+		#property-layout-full-width {
+			margin-top: -50px !important;
+		}
+	}
+}

@@ -1,0 +1,46 @@
+@charset "UTF-8";
+/*
+ Theme Name:   TopWaves
+ Theme URI:    http://demo.themetrail.com/realty/
+ Description:  Realty Child Theme
+ Author:       Samúel Jón Gunnarsson
+ Author URI:   http://villingaholt.nu
+ Template:     realty
+ Version:      1.0
+ Text Domain:  tt
+*/
+@import url("../../../realty/style.css");
+
+@import "variables";
+@import "document";
+@import "elements";
+@import "maps";
+@import "header";
+@import "footer";
+@import "widgets";
+@import "blog";
+@import "comments";
+@import "custom-post-types";
+@import "wordpress-styles";
+@import "property-listing";
+@import "property-search-form";
+@import "page-single-property";
+@import "page-taxonomy";
+@import "template-search-results";
+@import "template-contact";
+@import "template-slideshow";
+@import "template-vertical-map";
+@import "template-intro";
+@import "template-property-submit";
+@import "template-property-submit-listing";
+
+@import "plugins/chosen-js";
+@import "plugins/contact-form-7";
+@import "plugins/datepicker";
+@import "plugins/jp-carousel";
+@import "plugins/latest-tweets";
+@import "plugins/magnific-popup";
+@import "plugins/owl-carousel";
+@import "plugins/slim-jetpack";
+@import "plugins/spinner";
+@import "plugins/wordpress-social-login";

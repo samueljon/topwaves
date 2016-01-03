@@ -1,0 +1,77 @@
+/*------------------------------
+	Custom Post Type: Agent
+------------------------------*/
+
+.agent-thumbnail {
+	width: 100%;
+}
+
+.agent-details {
+	position: relative;
+	padding: 20px;
+	background-color: #fff;
+	.title {
+		margin-bottom: 0.5em;
+	}
+	.contact {
+		font-size: 0.9em;
+		color: $color-muted;
+		line-height: 2;
+		i {
+			display: inline-block;
+			width: 20px;
+			margin-right: 5px;
+		}
+		a {
+			color: inherit !important;
+		}
+	}
+	.social, .social-transparent {
+		margin-top: 15px;
+		padding-top: 15px;
+		text-align: center;
+		border-top: 1px solid $border-color-light;
+		i {
+			margin: 0 5px;
+		}
+	}
+}
+
+
+/*------------------------------
+	Custom Post Type: Testimonial
+------------------------------*/
+
+body.single-testimonial {
+	.testimonial-item {
+		.content blockquote {
+		p, cite {
+			font-size: 1.3em;
+			}
+		}
+	}
+}
+
+.testimonial-item {
+	.arrow-left {
+		position: absolute;
+		top: 15px;
+		left: -40px;
+		border-right-color: #fff;
+		border-width: 30px;
+	}
+	.content {
+		position: relative;
+		padding: 20px 25px;
+		font-size: 1em;
+		color: $color-muted;
+		background-color: #fff;
+		blockquote {
+			margin: 0;
+			text-align: left;
+			p, cite {
+				font-size: 1em;
+			}
+		}
+	}
+}

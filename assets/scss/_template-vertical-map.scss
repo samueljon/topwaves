@@ -1,0 +1,41 @@
+/*------------------------------
+	Template: Vertical Map
+------------------------------*/
+
+.page-template-template-map-vertical {
+	&.fixed-header header.navbar.mini.nav-right .navbar-header {
+		padding: 25px 0 0;
+	}
+	.navbar.mini {
+		top: 0 !important;
+	}
+	@media(min-width: 768px) {
+		.search-result-container {
+			position: relative;
+			padding-top: 30px;
+			&.container {
+				width: auto;
+				max-width: none;
+			}
+		}
+		.map-wrapper {
+			margin: -30px -15px 0 0;
+		}
+		.search-container {
+			width: 50%;
+		}
+		.map-container{
+			position: fixed;
+			right: 0;
+			width: 50%;
+		}
+	}
+	form {
+		margin-bottom: 30px;
+	}
+	@media(max-width: 767px) {
+		.page-title {
+			text-align: center;
+		}
+	}
+}

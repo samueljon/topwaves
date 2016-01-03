@@ -1,0 +1,81 @@
+/*------------------------------
+	Property: Search Form
+------------------------------*/
+
+.property-search-form {
+	position: relative;
+	z-index: 2;
+	margin-bottom: 50px;
+	padding: 30px 30px 10px;
+	font-size: 0.9em;
+	background-color: #fff;
+	border: 1px solid lighten( $border-color-light, 5% );
+	box-shadow: 0px 2px 0 0 lighten( $border-color-light, 5% );
+	input:not([type=submit]), select, select:focus, .chosen-container {
+		background-color: #fff;
+	}
+	.property-search-more {
+		height: 0;
+		overflow: hidden;
+		transition: all 0.2s;
+		h6 {
+			padding: 1em;
+			background-color: $background-light;
+		}
+		&.show {
+			height: auto;
+			margin-bottom: 20px;
+		}
+		.form-group {
+			margin-bottom: 0.5em;
+		}
+		input[type="radio"] {
+			margin-left: 2px;
+		}
+		i {
+			display: block;
+		}
+	}
+	.price-range {
+		height: 40px;
+		label {
+			display: block;
+			margin: 0;
+			height: 22px;
+			max-height: 25px;
+			line-height: 1;
+			color: inherit;
+			text-align: center;
+		}
+	}
+	.price-range-slider, #price-range {
+		&.noUi-target {
+			border-radius: 0;
+			border-color: $border-color-light;
+		}
+		&.noUi-horizontal {
+			height: 15px;
+			.noUi-origin {
+				box-shadow: none;
+			}
+			.noUi-handle {
+				height: 24px;
+				width: 24px;
+				left: -12px;
+				top: -6px;
+				cursor: pointer;
+				border-radius: 0;
+				border-color: $border-color-light;
+				box-shadow: none;
+				&:before, &:after {
+					top: 6px;
+					left: 9px;
+					height: 10px;
+				}
+				&:after {
+					left: 12px;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,46 @@
+/*------------------------------
+	Magnific Popup
+------------------------------*/
+
+.mfp-wrap {
+	.mfp-container {
+		.mfp-content {
+			.mfp-figure {
+				figure {
+					figcaption {
+						display: inherit;
+						margin: 0;
+					}
+				}
+			}
+		}
+		.mfp-arrow {
+			height: 50px;			
+			margin-top: -25px;
+			font-size: 40px;
+			line-height: 1;
+			opacity: 1;
+			@media(min-width:768px) {
+				height: 80px;
+				margin-top: -40px;
+				font-size: 80px;
+			}
+		}
+		.mfp-arrow-left:before, .mfp-arrow-left:after {
+			margin-top: 0;
+			border: none;
+		}
+		.mfp-arrow-left:before {
+			font-family: FontAwesome;
+			content: "\F104";
+		}
+		.mfp-arrow-right:before, .mfp-arrow-right:after {
+				margin-top: 0;
+			border: none;
+		}
+		.mfp-arrow-right:before {
+			font-family: FontAwesome;
+			content: "\F105";
+		}
+	}
+}

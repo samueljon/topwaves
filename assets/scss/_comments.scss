@@ -1,0 +1,129 @@
+/*------------------------------
+	Comments
+------------------------------*/
+
+#comments {
+	margin-top: 100px;
+	.title {
+		margin-bottom: 50px;
+		padding-bottom: 1em;
+		border-bottom: 2px solid $border-color-light;
+	}
+}
+	
+.comment-list {
+	margin-bottom: 100px;
+	padding: 0;
+	counter-reset: li;
+	ul {
+		margin: 40px 0 0 85px;
+		padding: 0;
+	}
+	li {
+		position: relative;
+		list-style: none;
+		&:before {
+			@media(min-width: 992px) and (max-width: 1100px) {
+				display: none;
+			}
+			opacity: 0.25;
+			position: absolute;
+			top: 0;
+			left: -50px;
+			font-size: 1.5em;
+			line-height: 65px;
+			content: "0" counter(li);
+			counter-increment: li;
+		}
+		li:before {
+			display: none;
+		}
+	}
+	.bypostauthor {
+		/*
+		> .comment-body {
+			padding-top: 20px;
+			border-top: 2px solid @color-primary;
+		}
+		*/
+	}
+	.comment-body {
+		margin-bottom: 50px;
+		padding: 30px;
+		background-color: #fff;
+	}
+	.comment-avatar {
+		float: left;
+		margin: 0 20px 0 0;
+		img {
+			height: 65px;
+			width: 65px;
+			border-radius: 50%;
+			filter: gray; /* IE6-9 */
+			-webkit-filter: grayscale(100%);
+			&:hover {
+				filter: none; /* IE6-9 */
+				-webkit-filter: grayscale(0%);
+			}
+		}
+	}
+	.comment-author {
+		.fn {
+			margin: 0;
+			font-size: 1.4em;
+			font-weight: 700;
+			line-height: 1;
+			a {
+				border-bottom: 1px solid $border-color-light;
+			}
+		}
+	}
+	.comment-meta {
+		display: inline-block;
+		margin: 10px 0;
+		color: $color-muted;
+		a {
+			color: $color-muted;
+		}
+	}
+	.comment-content {
+		overflow: hidden;
+		clear: both;
+		position: relative;
+		margin: 0 0 0 85px;
+	}
+}
+
+#respond {
+	padding: 30px;
+	background-color: #fff;
+	#reply-title {
+		margin-bottom: 0;
+		text-align: right;
+	}
+	a#cancel-comment-reply-link {
+		display: block;
+		margin-bottom: 2em;
+		font-size: 0.9em;
+		text-transform: none;
+	}
+}
+
+#commentform {
+	.form-group {
+		margin-bottom: 30px;
+	}
+	input {
+		width: 100%;
+		margin-bottom: 1em;
+	}
+	textarea {
+		margin-top: 30px;
+	}
+	#submit {
+		width: auto;
+	}
+	p.form-submit {
+		margin-bottom: 0;
+	}
+}

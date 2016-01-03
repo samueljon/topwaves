@@ -1,0 +1,105 @@
+/*------------------------------
+	Template: Search Results
+------------------------------*/
+
+body.page-template-template-property-search-php {
+	header.navbar {
+		margin-bottom: 0;
+	}
+	.map-wrapper {
+		margin-bottom: 0;
+	}
+	.property-search-form, #sidebar {
+		margin-top: 50px;
+	}
+}	
+	
+.search-results-header {
+	margin-bottom: 30px;
+	text-align: center;
+	@media(min-width: 768px) {
+		text-align: left;
+	}
+	.form-group {
+		margin:	0;
+	}
+	.page-title {
+		font-size: 1.5em;
+		@media(min-width: 768px) {
+			font-size: 2em;
+		}
+	}
+	.search-results-order {
+		float: none; 
+		display: inline-block;
+		@media(min-width: 768px) {
+			float: right;
+		}
+		.select {
+			background-color: darken( $background-light, 2% );
+			&::after {
+				right: 14px;
+			}
+			select {
+				padding-right: 28px;
+				border: none;
+			}
+		}
+	}
+	.search-results-view {
+		display: none;
+		float: right;
+		margin-left: 5px;
+		margin-bottom: 5px;
+		@media(min-width: 992px) {  
+			display: block;
+		}
+		i {
+			font-size: 1.2em;
+			height: 40px;
+			width: 40px;
+			color: #ddd; 
+			line-height: 40px;
+			text-align: center;
+			background-color: darken( $background-light, 2% );
+			&:hover {
+				cursor: pointer;
+				border-color: $border-color;
+			}
+			&.active {
+				color: $color-muted;
+			}
+		}
+	}
+}
+
+// List View (Default Styling = Grid View)
+[data-view="list-view"] {
+	li {
+		width: 100%;
+		font-size: 1em;
+		.property-item {
+			overflow: hidden;
+			@media(min-width: 992px) {
+				background-color: #fff;
+				.property-thumbnail {
+					float: left;
+					width: 40%;
+				}
+				.title {
+					font-size: 1.4em;
+				}
+				.property-content {
+					float: left;
+					width: 60%;
+					.property-price {
+						position: absolute;
+						bottom: 0;
+						left: 40%;
+						right: 0;
+					}
+				}
+			}
+		}
+	}
+}
