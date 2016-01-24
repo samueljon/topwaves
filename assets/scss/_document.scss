@@ -861,7 +861,8 @@ cite {
 	margin-bottom: 1em;
 	font-weight: 300;
 	text-transform: uppercase;
-	color: $color-muted;
+	//color: $color-muted;
+	color: $appelsinugulur1;
 	&::after {
 		position: absolute;
 		z-index: -2;
@@ -872,7 +873,8 @@ cite {
 		content: "";
 		height: 2px;
 		width: 9999px;
-		background-color: $border-color-light;
+		//background-color: $border-color-light;
+		background-color: $appelsinugulur1;
 	}
 	&.text-center span {
 		padding-left: 1em;

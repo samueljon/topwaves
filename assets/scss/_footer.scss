@@ -1,11 +1,30 @@
 /*------------------------------
 	Footer
 ------------------------------*/
+$footer-text-light: #DDE7F7;
 
 #footer {
 	margin: 100px auto 0;
-	background: rgba( 0, 0, 0, 0.02 );
+	background: rgba( $docker-blue, 1 );
 	text-align: center;
+
+    h1,h2,h3,h4,h5{
+      color: $docker-blue-text;
+    }
+    h5{
+      font-size: 2.2em;
+      margin-left: 22px;
+    }
+	&::before {
+		background: url("assets/images/footer-wave.svg") repeat-x;
+		height: 16px;
+		width: 100%;
+		position: absolute;
+		margin-top: -16px;
+		left: 0;
+		content: "";
+	}
+
 	@media(min-width: 768px) {
 		text-align: left;
 	}
@@ -15,11 +34,19 @@
 	#footer-bottom {
 		padding: 30px 0;
 		font-size: 0.9em;
-		color: $color-muted;
-		line-height: 40px;
-		background: rgba( 0, 0, 0, 0.04 );
+		color: $docker-blue-text;
+		border-top: solid;
+		border-color: $hvitur;
+        @include box-shadow($appelsinugulur1 2px 2px 10px);
+		line-height: 30px;
+		background: rgba( lighten($docker-blue, 10%), 0.5 );
 		a {
-			color: $color-muted;
+			color: $appelsinugulur1;
+            @include text-shadow(rgba(white, 0.2) 1px 1px 0);
+          &:hover{
+            color: $hvitur;
+            @include text-shadow(rgba($appelsinugulur1, 0.2) 1px 1px 0);
+          }
 		}
 		.social, 
 		.social-transparent {
@@ -27,10 +54,12 @@
 			@media(min-width: 768px) {
 				text-align: right;
 			}
+
 			.fa-angle-up:before {
 				position: relative;
 				top: -1px;
 			}
+
 		}
 		#property-search-button {
 			outline: none;
@@ -38,6 +67,7 @@
 	}
 	.title {
 		font-size: 1.3em;
+        color: $docker-blue-text;
 	}
 	#copyright {
 		opacity: 0.6;
@@ -57,9 +87,64 @@
 			@media(min-width: 768px) {
 				margin-right: 30px;
 			}
+          a{
+            font-weight: 700;
+          }
 		}
 	}
 	p {
-		color: $color-muted;
+		color: $docker-blue-text;
+
 	}
+
+  .container{
+    .whitebox{
+      padding-top: 20px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid lighten( $docker-blue, 5% );
+      box-shadow: 0px 2px 0 0 lighten( $docker-blue, 5% );
+      background-color: $background-light;
+    }
+  }
+  //Widgets in footer
+  .widget-container {
+    a {
+      color: $color-text;
+    }
+  }
+
+  .widget-content {
+    padding: 25px;
+    background-color: $background-light;
+    border: none;
+    box-shadow: none;
+  }
+
+  .widget-text {
+    padding: 25px;
+    background-color: $docker-blue-text;
+    .title {
+      margin-bottom: 0.25em;
+      font-size: 2.2em;
+    }
+  }
+
+  // input type
+  input, input[type=submit] {
+    border-radius: 5px;
+  }
+
+  .promoimg {
+    max-width: 130%;
+    float:right;
+  }
+  a {
+    color: $appelsinugulur1;
+    @include text-shadow(rgba(white, 0.2) 1px 1px 0);
+    &:hover{
+      color: $docker-blue-text;
+      @include text-shadow(rgba($appelsinugulur1, 0.2) 1px 1px 0);
+    }
+  }
 }

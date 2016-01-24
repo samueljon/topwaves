@@ -78,7 +78,7 @@ if ( ! empty( $realty_theme_option['favicon']['url'] ) ) {
 		    <a href="<?php if ( !empty( $realty_theme_option['logo-url'] ) ) { echo esc_url ( $realty_theme_option['logo-url'] ); } else { echo esc_url( home_url( '/' ) ); } ?>">
 		    <?php 
 		    if( empty( $logo ) ) { 
-		    	echo '<span>' . get_bloginfo('name') . '</span>';
+		    	//echo '<span>' . get_bloginfo('name') . '</span>';
 		    } else {
 		    	echo '<img src="' . $logo . '" alt="" />';
  				} ?>

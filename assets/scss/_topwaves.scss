@@ -1,0 +1,38 @@
+.panel{
+  border-radius: unset;
+  box-shadow: 0px 2px 0 0 #f3f3f3;
+}
+.panel-twblue{
+  border-color: #F3F3F3;
+
+  .panel-heading {
+    border-radius: unset;
+    color: #d9edf7;
+    font-weight: 700;
+    background-color: $docker-blue-light;
+    border-color: #F3F3F3;
+    text-align: center;
+    text-transform: uppercase;
+
+  }
+  .panel-body{
+    padding: 0px;
+  }
+}
+/*
+.panel-orange{
+  color: #333;
+  background-color: $appelsinugulur1;
+  border-color: #ddd;
+  //
+}
+*/
+
+.tinfo{
+  font-size: 0.74em;
+}
+
+.tinfotext{
+  font-size: 1.143em;
+  font-weight: bold;
+}

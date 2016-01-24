@@ -22,11 +22,11 @@ if ( is_page_template( 'template-intro.php' ) || is_page_template( 'template-map
 		<?php if ( is_active_sidebar( 'sidebar_footer_1' ) || is_active_sidebar( 'sidebar_footer_2' ) || is_active_sidebar( 'sidebar_footer_3' ) ) { ?>
         <div id="footer-top">
             <div class="container">	
-                <div class="row">
+                <div class="row whitebox">
                 <?php
                 // Check for Footer Column 1
                 if ( is_active_sidebar( 'sidebar_footer_1' ) ) : 
-                    echo '<div class="col-sm-4"><ul class="list-unstyled">';
+                    echo '<div class="col-sm-6"><ul class="list-unstyled">';
                     dynamic_sidebar( 'sidebar_footer_1' );
                     echo '</ul></div>';				
                 endif; 
@@ -37,8 +37,9 @@ if ( is_page_template( 'template-intro.php' ) || is_page_template( 'template-map
                     echo '</ul></div>';				
                 endif; 
                 // Check for Footer Column 3
+
                 if ( is_active_sidebar( 'sidebar_footer_3' ) ) : 
-                    echo '<div class="col-sm-4"><ul class="list-unstyled">';
+                    echo '<div class="col-sm-2"><ul class="list-unstyled">';
                     dynamic_sidebar( 'sidebar_footer_3' );
                     echo '</ul></div>';				
                 endif;
