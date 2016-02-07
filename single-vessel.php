@@ -231,81 +231,108 @@ if ( $single_property_layout == "theme_option_setting" || $single_property_layou
                     <section id="property-features" class="primary-tooltips">
                         <h3 class="section-title"><span><?php _e('Properties'); ?></span></h3>
                         <div class="row">
+                            <?php if ( !empty($vessel_yard) ) : ?>
                             <div class="col-md-6">
                                 <h6 class="tinfo">Yard</h6>
                                 <p class="tinfotext"><?php echo $vessel_yard;?></p>
                             </div>
+                            <?php endif; ?>
+                            <?php if ( !empty($vessel_designer) ) : ?>
                             <div class="col-md-6">
                                 <h6 class="tinfo">Designer / Architect</h6>
                                 <p class="tinfotext"><?php echo $vessel_designer;?></p>
                             </div>
+                            <?php endif; ?>
                         </div>
                         <div class="row">
+                            <?php if ( !empty($vessel_hull_shape) ) : ?>
                             <div class="col-md-3">
                                 <h6 class="tinfo">Hull shape</h6>
                                 <p class="tinfotext"><?php echo $vessel_hull_shape;?></p>
                             </div>
+                            <?php endif; ?>
+                            <?php if ( !empty($vessel_hull_material) ) : ?>
                             <div class="col-md-3">
                                 <h6 class="tinfo">Hull material</h6>
                                 <p class="tinfotext"><?php echo $vessel_hull_material;?></p>
                             </div>
+                            <?php endif; ?>
+                            <?php if ( !empty($vessel_hull_material) ) : ?>
                             <div class="col-md-3">
                                 <h6 class="tinfo">Deck material</h6>
                                 <p class="tinfotext"><?php echo $vessel_hull_material;?></p>
                             </div>
+                            <?php endif; ?>
+                            <?php if ( !empty($vessel_hull_material) ) : ?>
                             <div class="col-md-3">
                                 <h6 class="tinfo">Superstructure material</h6>
                                 <p class="tinfotext"><?php echo $vessel_hull_material;?></p>
                             </div>
+                            <?php endif; ?>
                         </div>
                         <div class="row">
+                            <?php if ( !empty($vessel_displacement) ) : ?>
                             <div class="col-md-3">
                                 <h6 class="tinfo">Displacement (approx.)</h6>
                                 <p class="tinfotext"><?php echo $vessel_displacement;?></p>
                             </div>
+                            <?php endif; ?>
+                            <?php if ( !empty($vessel_ballast) ) : ?>
                             <div class="col-md-3">
                                 <h6 class="tinfo">Ballast (approx.)</h6>
                                 <p class="tinfotext"><?php echo $vessel_ballast;?></p>
                             </div>
+                            <?php endif; ?>
+                            <?php if ( !empty($vessel_airdraft) ) : ?>
                             <div class="col-md-3">
                                 <h6 class="tinfo">Airdraft (approx.)</h6>
                                 <p class="tinfotext"><?php echo $vessel_airdraft;?></p>
                             </div>
+                            <?php endif; ?>
                         </div>
                         <div class="row">
+                            <?php if ( !empty($vessel_registered) ) : ?>
                             <div class="col-md-3">
                                 <h6 class="tinfo">Registered</h6>
                                 <p class="tinfotext"><?php echo $vessel_registered;?></p>
                             </div>
+                            <?php endif; ?>
+                            <?php if ( !empty($vessel_certification) ) : ?>
                             <div class="col-md-3">
                                 <h6 class="tinfo">RCD / CE Certification</h6>
                                 <p class="tinfotext"><?php echo $vessel_certification;?></p>
                             </div>
+                            <?php endif; ?>
+                            <?php if ( !empty($vessel_certificates) ) : ?>
                             <div class="col-md-4">
                                 <h6 class="tinfo">Certificates</h6>
                                 <p class="tinfotext"><?php echo $vessel_certificates;?></p>
                             </div>
+                            <?php endif; ?>
                         </div>
+                        <?php if ( !empty($vessel_colour) ) : ?>
                         <h6 class="tinfo">Colour</h6>
                         <p class="tinfotext"><?php echo $vessel_colour;?></p>
-                        <h6 class="tinfo">Construction method:</h6>
+                        <?php endif; ?>
+
                         <?php if( have_rows('vessel_construction_method') ): ?>
+                        <h6 class="tinfo">Construction method:</h6>
                             <ul class="list-unstyled row">
                                 <?php while( have_rows('vessel_construction_method') ): the_row(); ?>
                                     <li  class="col-sm-4 col-md-3 tinfotext"><i class="fa fa-check"></i><?php the_sub_field('sub_construction_method'); ?></li>
                                 <?php endwhile; ?>
                             </ul>
                         <?php endif; ?>
-                        <h6 class="tinfo">Steering system</h6>
                         <?php if( have_rows('vessel_steering_system') ): ?>
+                        <h6 class="tinfo">Steering system</h6>
                             <ul class="list-unstyled row">
                                 <?php while( have_rows('vessel_steering_system') ): the_row(); ?>
                                     <li  class="col-sm-4 col-md-3 tinfotext"><i class="fa fa-check"></i><?php the_sub_field('sub_steering_system'); ?></li>
                                 <?php endwhile; ?>
                             </ul>
                         <?php endif; ?>
-                        <h6 class="tinfo">Windows</h6>
                         <?php if( have_rows('vessel_windows') ): ?>
+                        <h6 class="tinfo">Windows</h6>
                             <ul class="list-unstyled row">
                                 <?php while( have_rows('vessel_windows') ): the_row(); ?>
                                     <li  class="col-sm-4 col-md-3 tinfotext"><i class="fa fa-check"></i><?php the_sub_field('sub_vessel_window'); ?></li>
@@ -313,8 +340,8 @@ if ( $single_property_layout == "theme_option_setting" || $single_property_layou
                             </ul>
                         <?php endif; ?>
 
-                        <h6 class="tinfo">Suitable for / as</h6>
                         <?php if( have_rows('vessel_suitable_for') ): ?>
+                        <h6 class="tinfo">Suitable for / as</h6>
                             <ul class="list-unstyled row">
                                 <?php while( have_rows('vessel_suitable_for') ) : the_row(); ?>
                                     <li  class="col-sm-4 col-md-3 tinfotext"><i class="fa fa-check"></i><?php the_sub_field('sub_suitable_for'); ?></li>
@@ -322,14 +349,18 @@ if ( $single_property_layout == "theme_option_setting" || $single_property_layou
                             </ul>
                         <?php endif; ?>
                         <div class="row">
+                            <?php if ( !empty($vessel_general_information) ) : ?>
                             <div class="col-md-6">
                                 <h6 class="tinfo">General information</h6>
                                 <p class="tinfotext"><?php echo $vessel_general_information;?></p>
                             </div>
+                            <?php endif; ?>
+                            <?php if ( !empty($vessel_additional_information) ) : ?>
                             <div class="col-md-6">
                                 <h6 class="tinfo">Additional information</h6>
                                 <p class="tinfotext"><?php echo $vessel_additional_information;?></p>
                             </div>
+                            <?php endif; ?>
                         </div>
                     </section>
 
