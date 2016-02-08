@@ -169,7 +169,7 @@ function tw_vessel_listing( $atts, $content = null ) {
 
 		if ( $type ) {
 			$tax_query[]	= array(
-				'taxonomy' 	=> 'property-type',
+				'taxonomy' 	=> 'vessel_type',
 				'field' 		=> 'slug',
 				'terms'			=> $type
 			);
