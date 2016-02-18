@@ -363,3 +363,9 @@ function tw_vessel_listing( $atts, $content = null ) {
 	return ob_get_clean();
 }
 add_shortcode('vessel_listing', 'tw_vessel_listing');
+
+function topwaves_mime_types($mimes) {
+	$mimes['svg'] = 'image/svg+xml';
+	return $mimes;
+}
+add_filter('upload_mimes', 'topwaves_mime_types');
