@@ -584,7 +584,7 @@ function tw_equipment_listing( $atts, $content = null ) {
 						}
 					}
 
-					get_template_part( 'lib/inc/template/vessel', 'item' );
+					get_template_part( 'lib/inc/template/equipment', 'item' );
 
 					echo '</li>';
 
@@ -849,7 +849,7 @@ function tw_car_listing( $atts, $content = null ) {
 						}
 					}
 
-					get_template_part( 'lib/inc/template/vessel', 'item' );
+					get_template_part( 'lib/inc/template/car', 'item' );
 
 					echo '</li>';
 
