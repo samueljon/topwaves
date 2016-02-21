@@ -17,7 +17,7 @@ header.navbar {
 	text-align: center;
 	//background-color: #333;
 	background-color: $docker-blue-light;
-	transition: all 0.4s;
+	//transition: all 0.4s;
 	@media(min-width: 768px) {
 		text-align: left;
 	}
@@ -151,7 +151,8 @@ header.navbar {
 			}
 			img {
 				opacity: 0;
-				height: auto;
+				//height: auto;
+				height: 48px;
 			}
 			.tagline {
 				margin: 1em 0;
@@ -163,11 +164,11 @@ header.navbar {
 	// Theme Option: Navigation Right
 	&.nav-right {
 		.navbar-header {
-			padding: 25px 0 0;
+			padding: 5px 0 0;
 			border: none;
 		}
 		.container .navbar-brand {
-			padding-bottom: 25px;
+			padding-bottom: 5px;
 			@media(min-width: 768px) {
 				padding-bottom: 0;
 				a {
