@@ -672,7 +672,7 @@ function tw_car_listing( $atts, $content = null ) {
 		}
 
 		$query_properties_args = array(
-			'post_type' 			=> 'vessel',
+			'post_type' 			=> 'car',
 			'posts_per_page' 	=> $per_page,
 			'paged' 					=> $paged
 		);
