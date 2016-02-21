@@ -132,19 +132,19 @@ global $realty_theme_option;
 			if ( ! empty( $vessel_length ) ) { ?>
 				<div>
 					<div class="meta-title"><i class="fa fa-expand"></i></div>
-					<div class="meta-data" data-toggle="tooltip" title="<?php _e( 'Dimensions' ); ?>"><?php echo $vessel_length; ?></div>
+					<div class="meta-data" data-toggle="tooltip" title="<?php _e( 'Dimensions' ); ?>"><?php echo $vessel_length->name; ?></div>
 				</div>
 			<?php }
 			if ( ! empty( $vessel_built ) ) { ?>
 				<div>
 					<div class="meta-title"><i class="fa fa-calendar-o"></i></div>
-					<div class="meta-data" data-toggle="tooltip" title="<?php echo __( 'Built' ); ?>"><?php echo $vessel_built ?></div>
+					<div class="meta-data" data-toggle="tooltip" title="<?php echo __( 'Built' ); ?>"><?php echo $vessel_built->name; ?></div>
 				</div>
 			<?php }
 			if ( ! empty( $vessel_material ) ) { ?>
 				<div>
 					<div class="meta-title"><i class="fa fa-wrench"></i></div>
-					<div class="meta-data" data-toggle="tooltip" title="<?php echo __( 'Building Material' ); ?>"><?php echo $vessel_material; ?></div>
+					<div class="meta-data" data-toggle="tooltip" title="<?php echo __( 'Building Material' ); ?>"><?php echo $vessel_material->name; ?></div>
 				</div>
 			<?php }
 			if ( ! empty( $bathrooms ) ) { ?>
