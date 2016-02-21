@@ -2123,7 +2123,7 @@ header.navbar .container .navbar-brand a span {
 /* line 152, assets/scss/_header.scss */
 header.navbar .container .navbar-brand img {
   opacity: 0;
-  height: 48px;
+  height: 96px;
 }
 /* line 157, assets/scss/_header.scss */
 header.navbar .container .navbar-brand .tagline {
