@@ -135,19 +135,31 @@ global $realty_theme_option;
 			if ( ! empty( $car_type ) ) { ?>
 				<div>
 					<div class="meta-title"><i class="fa fa-expand"></i></div>
-					<div class="meta-data" data-toggle="tooltip" title="<?php _e( 'Vehicle Type' ); ?>"><?php echo $car_type->name; ?></div>
+					<div class="meta-data" data-toggle="tooltip" title="<?php _e( 'Vehicle Type' ); ?>">
+                        <?php
+                        $term = get_term( $car_type[0] , 'car_type' );
+                        echo $term->name; ?>
+                    </div>
 				</div>
 			<?php }
 			if ( ! empty( $car_make ) ) { ?>
 				<div>
 					<div class="meta-title"><i class="fa fa-calendar-o"></i></div>
-					<div class="meta-data" data-toggle="tooltip" title="<?php echo __( 'Vehicle Make' ); ?>"><?php echo $car_make->name; ?></div>
+					<div class="meta-data" data-toggle="tooltip" title="<?php echo __( 'Vehicle Make' ); ?>">
+                        <?php
+                        $term = get_term( $car_make[0] , 'car_make' );
+                        echo $term->name; ?>
+                    </div>
 				</div>
 			<?php }
 			if ( ! empty( $car_model ) ) { ?>
 				<div>
 					<div class="meta-title"><i class="fa fa-wrench"></i></div>
-					<div class="meta-data" data-toggle="tooltip" title="<?php echo __( 'Vehicle Model' ); ?>"><?php echo $car_model->name; ?></div>
+					<div class="meta-data" data-toggle="tooltip" title="<?php echo __( 'Vehicle Model' ); ?>">
+                        <?php
+                        $term = get_term( $car_model[0] , 'car_model' );
+                        echo $term->name; ?>
+                        </div>
 				</div>
 			<?php }
 			if ( ! empty( $bathrooms ) ) { ?>
