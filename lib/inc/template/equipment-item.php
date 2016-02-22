@@ -5,6 +5,7 @@ $property_location = get_the_terms( $post->ID, 'property-location' );
 $property_featured = get_post_meta( $post->ID, 'estate_property_featured', true );
 $property_status_update = get_post_meta( $post->ID, 'estate_property_status_update', true );
 $google_maps = get_post_meta( $post->ID, 'estate_property_google_maps', true );
+$address = '';
 if ( !tt_is_array_empty( $google_maps) ) {
 	$address = $google_maps['address'];
 }
@@ -16,10 +17,10 @@ $bathrooms = get_post_meta( $post->ID, 'estate_property_bathrooms', true );
 $last_updated_on=date_i18n(get_option( 'date_format' ),strtotime($post->post_modified));
 
 // Minimal Information
-$vessel_length = get_field('vessel_length');
 $vessel_location = get_field('estate_property_google_maps');
-$vessel_built = get_field('vessel_built');
-$vessel_material = get_field('vessel_material');
+$equipment_type = get_field('equipment_type');
+
+
 
 global $realty_theme_option;
 ?>
@@ -126,34 +127,19 @@ global $realty_theme_option;
 	<div class="property-content">
 		<?php 
 		// Default Listing Fields
-		if ( $realty_theme_option['property-listing-type'] != "custom" && ( $size || $rooms || $bedrooms || $bathrooms||$vessel_length||$vessel_built||$vessel_material ) ) { ?>
+		if ( $realty_theme_option['property-listing-type'] != "custom" && ( $equipment_type ) ) { ?>
 		<div class="property-meta clearfix">
 			<?php
-			if ( ! empty( $vessel_length ) ) { ?>
-				<div>
-					<div class="meta-title"><i class="fa fa-expand"></i></div>
-					<div class="meta-data" data-toggle="tooltip" title="<?php _e( 'Dimensions' ); ?>"><?php echo $vessel_length->name; ?></div>
-				</div>
-			<?php }
-			if ( ! empty( $vessel_built ) ) { ?>
-				<div>
-					<div class="meta-title"><i class="fa fa-calendar-o"></i></div>
-					<div class="meta-data" data-toggle="tooltip" title="<?php echo __( 'Built' ); ?>"><?php echo $vessel_built->name; ?></div>
-				</div>
-			<?php }
-			if ( ! empty( $vessel_material ) ) { ?>
+			if ( ! empty( $equipment_type ) ) { ?>
 				<div>
 					<div class="meta-title"><i class="fa fa-wrench"></i></div>
-					<div class="meta-data" data-toggle="tooltip" title="<?php echo __( 'Building Material' ); ?>"><?php echo $vessel_material->name; ?></div>
+					<div class="meta-data" data-toggle="tooltip" title="<?php _e( 'Equipment type' ); ?>">
+						<?php
+						$term = get_term( $equipment_type[0] , 'equipment_type' );
+						echo $term->name; ?>
+					</div>
 				</div>
-			<?php }
-			if ( ! empty( $bathrooms ) ) { ?>
-				<div>
-					<div class="meta-title"><i class="fa fa-tint"></i></div>
-					<div class="meta-data" data-toggle="tooltip" title="<?php echo __( 'Bathrooms', 'tt' ); ?>"><?php echo $bathrooms . ' ' . _n( __( 'Bathroom', 'tt' ), __( 'Bathrooms', 'tt' ), $bathrooms, 'tt' ); ?></div>
-				</div>
-			<?php }
-			?>
+			<?php } ?>
 		</div>
 		<?php 
 		}
