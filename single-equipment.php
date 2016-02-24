@@ -88,23 +88,23 @@ if ( $single_property_layout == "theme_option_setting" || $single_property_layou
         <?php
         if ( $property_image_location == 'above' ) {
 
-            //include TEMPLATEPATH . '/lib/inc/template/property-slideshow.php';
+            include TEMPLATEPATH . '/lib/inc/template/property-slideshow.php';
 
         }
 
         // When only video is shown "above"
         if ( $property_image_location == 'begin' && $property_video_location == 'above' && $property_video_provider != 'none' && $property_video_id ) {
-            //include TEMPLATEPATH . '/lib/inc/template/property-video.php';
+            include TEMPLATEPATH . '/lib/inc/template/property-video.php';
         }
         ?>
 
         <?php
         // Property Title Style
         if ( $realty_theme_option['property-title-style'] ) {
-            //$property_header_title_style = $realty_theme_option['property-title-style'];
+            $property_header_title_style = $realty_theme_option['property-title-style'];
         }
         else {
-            //$property_header_title_style = null;
+            $property_header_title_style = null;
         }
 
 
