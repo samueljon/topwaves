@@ -7,32 +7,6 @@ $hide_sidebar = get_post_meta( $post->ID, 'estate_page_hide_sidebar', true );
 // Equipment Information.
 $equipment_location = get_field('equipment_location');
 
-// Minimal Information
-$vessel_length = get_field('vessel_length');
-
-$vessel_built = get_field('vessel_built');
-$vessel_material = get_field('vessel_material');
-
-//General Information
-$vessel_yard = get_field('vessel_yard');
-$vessel_designer = get_field('vessel_designer');
-$vessel_hull_shape = get_field('vessel_hull_shape');
-$vessel_hull_material = get_field('vessel_hull_material');
-$vessel_superstructure_material = get_field('vessel_superstructure_material');
-$vessel_construction_method = get_field('vessel_construction_method');
-$vessel_steering_system = get_field('vessel_steering_system');
-$vessel_windows = get_field('vessel_windows');
-$vessel_displacement = get_field('vessel_displacement');
-$vessel_ballast = get_field('vessel_ballast');
-$vessel_airdraft = get_field('vessel_airdraft');
-$vessel_registered = get_field('vessel_registered');
-$vessel_colour = get_field('vessel_colour');
-$vessel_certificates = get_field('vessel_certificates');
-$vessel_certification = get_field('vessel_certification');
-$vessel_suitable_for = get_field('vessel_suitable_for');
-$vessel_general_information = get_field('vessel_general_information');
-$vessel_additional_information = get_field('vessel_additional_information');
-
 // Reusing relestate logic
 $social_sharing = $realty_theme_option['property-social-sharing'];
 $show_agent_information = $realty_theme_option['property-agent-information'];
@@ -88,13 +62,13 @@ if ( $single_property_layout == "theme_option_setting" || $single_property_layou
         <?php
         if ( $property_image_location == 'above' ) {
 
-            include TEMPLATEPATH . '/lib/inc/template/property-slideshow.php';
+            //include TEMPLATEPATH . '/lib/inc/template/property-slideshow.php';
 
         }
 
         // When only video is shown "above"
         if ( $property_image_location == 'begin' && $property_video_location == 'above' && $property_video_provider != 'none' && $property_video_id ) {
-            include TEMPLATEPATH . '/lib/inc/template/property-video.php';
+            //include TEMPLATEPATH . '/lib/inc/template/property-video.php';
         }
         ?>
 
