@@ -4,9 +4,12 @@ global $post;
 global $realty_theme_option;
 $hide_sidebar = get_post_meta( $post->ID, 'estate_page_hide_sidebar', true );
 
+// Equipment Information.
+$equipment_location = get_field('equipment_location');
+
 // Minimal Information
 $vessel_length = get_field('vessel_length');
-$vessel_location = get_field('estate_property_google_maps');
+
 $vessel_built = get_field('vessel_built');
 $vessel_material = get_field('vessel_material');
 
@@ -390,8 +393,8 @@ if ( $single_property_layout == "theme_option_setting" || $single_property_layou
 
                             <?php
                             // Property Map
-                            if ( $vessel_location || $google_maps ) {
-                                get_template_part( 'lib/inc/template/google-map-single-property' );
+                            if ( $equipment_location || $google_maps ) {
+                                get_template_part( 'lib/inc/template/google-map-single-equipment' );
                             }
                             ?>
 

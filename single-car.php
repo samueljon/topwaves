@@ -30,6 +30,12 @@ $vessel_suitable_for = get_field('vessel_suitable_for');
 $vessel_general_information = get_field('vessel_general_information');
 $vessel_additional_information = get_field('vessel_additional_information');
 
+// Car Variables
+$car_type = get_field('car_type');
+$car_make = get_field('car_make');
+$car_model = get_field('car_model');
+$car_location = get_field('car_location');
+
 // Reusing relestate logic
 $social_sharing = $realty_theme_option['property-social-sharing'];
 $show_agent_information = $realty_theme_option['property-agent-information'];
@@ -85,23 +91,23 @@ if ( $single_property_layout == "theme_option_setting" || $single_property_layou
         <?php
         if ( $property_image_location == 'above' ) {
 
-            //include TEMPLATEPATH . '/lib/inc/template/property-slideshow.php';
+            include TEMPLATEPATH . '/lib/inc/template/property-slideshow.php';
 
         }
 
         // When only video is shown "above"
         if ( $property_image_location == 'begin' && $property_video_location == 'above' && $property_video_provider != 'none' && $property_video_id ) {
-            //include TEMPLATEPATH . '/lib/inc/template/property-video.php';
+            include TEMPLATEPATH . '/lib/inc/template/property-video.php';
         }
         ?>
 
         <?php
         // Property Title Style
         if ( $realty_theme_option['property-title-style'] ) {
-            //$property_header_title_style = $realty_theme_option['property-title-style'];
+            $property_header_title_style = $realty_theme_option['property-title-style'];
         }
         else {
-            //$property_header_title_style = null;
+            $property_header_title_style = null;
         }
 
 
@@ -134,29 +140,26 @@ if ( $single_property_layout == "theme_option_setting" || $single_property_layou
         <div class="container">
             <div class="property-meta primary-tooltips">
                 <div class="row">
-                    <?php if($vessel_length) : ?>
+                    <?php if($car_type) : ?>
                         <div class="col-sm-4 col-md-3">
-                            <div class="meta-title"><i class="fa fa-expand"></i></div>
-                            <div class="meta-data" data-toggle="tooltip" title="" data-original-title="<?php _e( 'Size', 'tt' ); ?>"><?php print $vessel_length; ?></div>
+                            <div class="meta-title"><i class="fa fa-wrench"></i></div>
+                            <div class="meta-data" data-toggle="tooltip" title="" data-original-title="<?php _e( 'Vehicle Type'); ?>">
+                                <?php print $car_type[0]->name; ?></div>
                         </div>
                     <?php endif; ?>
 
-                    <?php if($vessel_location) : ?>
-                        <div class="col-sm-4 col-md-3">
-                            <div class="meta-title"><i class="fa fa-map-o"></i></div>
-                            <div class="meta-data" data-toggle="tooltip" title="" data-original-title="<?php _e( 'Location', 'tt' ); ?>"><?php print $vessel_location['address']; ?></div>
-                        </div>
-                    <?php endif; ?>
-                    <?php if($vessel_built) : ?>
+                    <?php if($car_make) : ?>
                         <div class="col-sm-4 col-md-3">
                             <div class="meta-title"><i class="fa fa-calendar-o"></i></div>
-                            <div class="meta-data" data-toggle="tooltip" title="" data-original-title="<?php _e('Built'); ?>"><?php print $vessel_built; ?></div>
+                            <div class="meta-data" data-toggle="tooltip" title="" data-original-title="<?php _e( 'Vehicle Make'); ?>">
+                                <?php print $car_make[0]->name; ?></div>
                         </div>
                     <?php endif; ?>
-                    <?php if($vessel_material) : ?>
+                    <?php if($car_model) : ?>
                         <div class="col-sm-4 col-md-3">
-                            <div class="meta-title"><i class="fa fa-wrench"></i></div>
-                            <div class="meta-data" data-toggle="tooltip" title="" data-original-title="<?php _e('Building Material'); ?>"><?php print $vessel_material; ?></div>
+                            <div class="meta-title"><i class="fa fa-calendar-o"></i></div>
+                            <div class="meta-data" data-toggle="tooltip" title="" data-original-title="<?php _e('Vehicle Model'); ?>">
+                                <?php print $car_model[0]->name; ?></div>
                         </div>
                     <?php endif; ?>
                     <div class="col-sm-4 col-md-3">
@@ -390,8 +393,8 @@ if ( $single_property_layout == "theme_option_setting" || $single_property_layou
 
                             <?php
                             // Property Map
-                            if ( $vessel_location || $google_maps ) {
-                                get_template_part( 'lib/inc/template/google-map-single-property' );
+                            if ( $car_location || $google_maps ) {
+                                get_template_part( 'lib/inc/template/google-map-single-car' );
                             }
                             ?>
 

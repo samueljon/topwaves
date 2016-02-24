@@ -5,6 +5,7 @@ $property_location = get_the_terms( $post->ID, 'property-location' );
 $property_featured = get_post_meta( $post->ID, 'estate_property_featured', true );
 $property_status_update = get_post_meta( $post->ID, 'estate_property_status_update', true );
 $google_maps = get_post_meta( $post->ID, 'estate_property_google_maps', true );
+$address = '';
 if ( !tt_is_array_empty( $google_maps) ) {
 	$address = $google_maps['address'];
 }
@@ -129,7 +130,7 @@ global $realty_theme_option;
 	<div class="property-content">
 		<?php 
 		// Default Listing Fields
-		if ( $realty_theme_option['property-listing-type'] != "custom" && ( $size || $rooms || $bedrooms || $bathrooms||$car_type||$car_make||$car_model ) ) { ?>
+		if ( $realty_theme_option['property-listing-type'] != "custom" && ( $car_type||$car_make||$car_model ) ) { ?>
 		<div class="property-meta clearfix">
 			<?php
 			if ( ! empty( $car_type ) ) { ?>
@@ -137,7 +138,7 @@ global $realty_theme_option;
 					<div class="meta-title"><i class="fa fa-expand"></i></div>
 					<div class="meta-data" data-toggle="tooltip" title="<?php _e( 'Vehicle Type' ); ?>">
                         <?php
-                        $term = get_term( $car_type[0] , 'car_type' );
+                        $term = $car_type[0];
                         echo $term->name; ?>
                     </div>
 				</div>
@@ -157,18 +158,11 @@ global $realty_theme_option;
 					<div class="meta-title"><i class="fa fa-wrench"></i></div>
 					<div class="meta-data" data-toggle="tooltip" title="<?php echo __( 'Vehicle Model' ); ?>">
                         <?php
-                        $term = get_term( $car_model[0] , 'car_model' );
+                        $term = $car_model[0];
                         echo $term->name; ?>
                         </div>
 				</div>
-			<?php }
-			if ( ! empty( $bathrooms ) ) { ?>
-				<div>
-					<div class="meta-title"><i class="fa fa-tint"></i></div>
-					<div class="meta-data" data-toggle="tooltip" title="<?php echo __( 'Bathrooms', 'tt' ); ?>"><?php echo $bathrooms . ' ' . _n( __( 'Bathroom', 'tt' ), __( 'Bathrooms', 'tt' ), $bathrooms, 'tt' ); ?></div>
-				</div>
-			<?php }
-			?>
+			<?php } ?>
 		</div>
 		<?php 
 		}
