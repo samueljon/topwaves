@@ -46,3 +46,246 @@
   border-style: solid;
   border-color: rgba(0,0,0,.2);
 }
+
+
+// Agents
+//colors
+$color_geyser_20_approx: rgba(214, 224, 226, 0.2);
+$color_tapa_approx: #777;
+$mercury: #e5e5e5;
+$color_shark_approx: #262626;
+$color_mountain_mist_approx: #999999;
+$color_desert_storm_approx: #f8f8f8;
+$white: #ffffff;
+$color_apple_approx: #53a93f;
+$color_royal_blue_approx: #427fed;
+$color_cape_cod_approx: #404040;
+$white_50: rgba(255,255,255,0.5);
+
+//urls
+// $url_0: url(http://lorempixel.com/850/280/nature/4/);
+$url_0: url('assets/images/photo-1445966838217-f418f2601b54.jpeg');
+
+
+//@extend-elements
+//original selectors
+//.card .card-comments .comments-collapse-toggle a, .card .card-comments .comments-collapse-toggle span
+%extend_1 {
+  padding-right: 5px;
+  overflow: hidden;
+  font-size: 12px;
+  color: $color_mountain_mist_approx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+.card {
+  padding-top: 20px;
+  margin: 10px 0 20px;
+  background-color: $color_geyser_20_approx;
+  border-top-width: 0;
+  border-bottom-width: 2px;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 3px;
+  //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+  box-shadow: none;
+  //Instead of the line below you could use @include box-sizing($bs)
+  box-sizing: border-box;
+  .card-heading {
+	padding: 0 20px;
+	margin: 0;
+	&.simple {
+	  font-size: 20px;
+	  font-weight: 300;
+	  color: $color_tapa_approx;
+	  border-bottom: 1px solid $mercury;
+	}
+	&.image {
+	  img {
+		display: inline-block;
+		width: 46px;
+		height: 46px;
+		margin-right: 15px;
+		vertical-align: top;
+		border: 0;
+		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+		border-radius: 50%;
+	  }
+	  .card-heading-header {
+		display: inline-block;
+		vertical-align: top;
+		h3 {
+		  margin: 0;
+		  font-size: 14px;
+		  line-height: 16px;
+		  color: $color_shark_approx;
+		}
+		span {
+		  font-size: 12px;
+		  color: $color_mountain_mist_approx;
+		}
+	  }
+	}
+  }
+  .card-body {
+	padding: 0 20px;
+	margin-top: 20px;
+  }
+  .card-media {
+	padding: 0 20px;
+	margin: 0 -14px;
+	img {
+	  max-width: 100%;
+	  max-height: 100%;
+	}
+  }
+  .card-actions {
+	min-height: 30px;
+	padding: 0 20px 20px;
+	margin: 20px 0 0;
+  }
+  .card-comments {
+	padding: 20px;
+	margin: 0;
+	background-color: $color_desert_storm_approx;
+	.comments-collapse-toggle {
+	  padding: 0;
+	  margin: 0 20px 12px;
+	  a {
+		@extend %extend_1;
+	  }
+	  span {
+		@extend %extend_1;
+	  }
+	}
+  }
+  &.people {
+	position: relative;
+	display: inline-block;
+	width: 170px;
+	height: 300px;
+	padding-top: 0;
+	margin-left: 20px;
+	overflow: hidden;
+	vertical-align: top;
+	&:first-child {
+	  margin-left: 0;
+	}
+	.card-top {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  display: inline-block;
+	  width: 170px;
+	  height: 150px;
+	  background-color: $white;
+	  &.green {
+		background-color: $color_apple_approx;
+	  }
+	  &.blue {
+		background-color: $color_royal_blue_approx;
+	  }
+	}
+	.card-info {
+	  position: absolute;
+	  top: 150px;
+	  display: inline-block;
+	  width: 100%;
+	  height: 101px;
+	  overflow: hidden;
+	  background: $white;
+	  //Instead of the line below you could use @include box-sizing($bs)
+	  box-sizing: border-box;
+	  .title {
+		display: block;
+		margin: 8px 14px 0;
+		overflow: hidden;
+		font-size: 16px;
+		font-weight: bold;
+		line-height: 18px;
+		color: $color_cape_cod_approx;
+	  }
+	  .desc {
+		display: block;
+		margin: 8px 14px 0;
+		overflow: hidden;
+		font-size: 12px;
+		line-height: 16px;
+		color: $color_tapa_approx;
+		text-overflow: ellipsis;
+	  }
+	}
+	.card-bottom {
+	  position: absolute;
+	  bottom: 0;
+	  left: 0;
+	  display: inline-block;
+	  width: 100%;
+	  padding: 10px 20px;
+	  line-height: 29px;
+	  text-align: center;
+	  //Instead of the line below you could use @include box-sizing($bs)
+	  box-sizing: border-box;
+	}
+  }
+  &.hovercard {
+	position: relative;
+	padding-top: 0;
+	overflow: hidden;
+	text-align: center;
+	background-color: $color_geyser_20_approx;
+	.cardheader {
+	  background: $url_0;
+	  //background: transparent;
+	  background-size: cover;
+	  height: 135px;
+	}
+	.avatar {
+	  position: relative;
+	  top: -50px;
+	  margin-bottom: -50px;
+	  img {
+		width: 100px;
+		height: 100px;
+		max-width: 100px;
+		max-height: 100px;
+		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+		border-radius: 50%;
+		border: 5px solid $white_50;
+	  }
+	}
+	.info {
+	  padding: 4px 8px 10px;
+	  .title {
+		margin-bottom: 4px;
+		font-size: 24px;
+		line-height: 1;
+		color: $color_shark_approx;
+		vertical-align: middle;
+	  }
+	  .desc {
+		overflow: hidden;
+		font-size: 12px;
+		line-height: 20px;
+		color: $color_tapa_approx;
+		text-overflow: ellipsis;
+	  }
+	}
+	.bottom {
+	  padding: 0 20px;
+	  margin-bottom: 17px;
+	}
+  }
+}
+.btn {
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  line-height: 18px;
+}
+.card-comments .media-heading {
+  font-size: 13px;
+  font-weight: bold;
+}

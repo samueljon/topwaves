@@ -6,36 +6,31 @@
  * Time: 18:12
  */
 
-$foo = 'bar';
 function tw_agents( $atts, $content = null ) {
 	extract( shortcode_atts( array(
-		'columns'		=> '2',
+		'columns'		=> '4',
 		'order'			=> 'DESC',
-		'limit'         => '0'
+		'limit'         => '0',
+
 	), $atts ) );
 
 	global $realty_theme_option;
 	ob_start();
 
-	if ( $order && $limit > '0') {
-		$all_agents = get_users( array( 'role' => 'agent', 'fields' => 'ID', 'orderby'=> 'registered', 'order' => $order , 'limit' => $limit) );
-	} elseif ( $order ){
-		$all_agents = get_users( array( 'role' => 'agent', 'fields' => 'ID', 'orderby'=> 'registered', 'order' => $order) );
-	}else{
-		$all_agents = get_users( array( 'role' => 'agent', 'fields' => 'ID' ) );
-	}
+	$all_agents = get_users( array(
+		'fields' => 'ID',
+		'order' => 'ASC',
+		'orderby'=> 'registered',
+		'include' => array( 2, 4, 6, 11 ))
+	);
+	?>
 
-	if ( $columns ) {
-		echo '<div class="tt-agent-shortcode owl-carousel-' . $columns . '-nav nav-bottom">';
-	} else {
-		echo '<div class="owl-carousel-2-nav nav-bottom">';
-	}
-
-	foreach( $all_agents as $agent ) {
-
+	<div class="row">
+	<?php foreach( $all_agents as $agent ) :
 		$company_name = get_user_meta( $agent, 'company_name', true );
 		$first_name = get_user_meta( $agent, 'first_name', true );
 		$last_name = get_user_meta( $agent, 'last_name', true );
+		$jobdescription = get_user_meta($agent, 'jobdescription', true );
 		$email = get_userdata( $agent );
 		$email = $email->user_email;
 		$office = get_user_meta( $agent, 'office_phone_number', true );
@@ -57,37 +52,69 @@ function tw_agents( $atts, $content = null ) {
 		} else {
 			$no_socials = true;
 		}
-?>
-		<div class="widget-container">
-			<div class="owl-thumbnail">
-				<a href="<?php echo $author_profile_url; ?>">
-<?php
-		if ( $profile_image ) {
-			$profile_image_id = tt_get_image_id( $profile_image );
-			$profile_image_array = wp_get_attachment_image_src( $profile_image_id, 'square-400' );
-			echo '<img src="' . $profile_image_array[0] . '" alt="" />';
-		}
-		else {
-			echo '<img src="//placehold.it/400x400/eee/ccc/&text=.." alt="" />';
-		}
-?>
-				</a>
-			</div>
-			<div class="widget-text">
-				<div class="agent-details<?php if ( $no_socials ) { echo " no-details"; } ?>">
-<?php
-		if ( $first_name && $last_name ) {
-			echo '<h4 class="title">' . $first_name . ' ' . $last_name . '</h4>';
-		}
-?>
-					<?php if ( $email && $realty_theme_option['show-agent-email']  ) { ?><div class="contact"><i class="fa fa-envelope-o"></i><a href="mailto:<?php echo antispambot( $email ); ?>"><?php echo antispambot( $email ); ?></a></div><?php } ?>
-					<?php if ( $office && $realty_theme_option['show-agent-office'] ) { ?><div class="contact"><i class="fa fa-phone"></i><?php echo $office; ?></div><?php } ?>
-					<?php if ( $mobile && $realty_theme_option['show-agent-mobile'] ) { ?><div class="contact"><i class="fa fa-mobile"></i><?php echo $mobile; ?></div><?php } ?>
+
+		?>
+			<div class="col-lg-3 col-sm-6">
+				<div class="card hovercard">
+					<div class="cardheader"></div>
+					<div class="avatar">
+						<?php
+						if ( $profile_image ) {
+							$profile_image_id = tt_get_image_id( $profile_image );
+							$profile_image_array = wp_get_attachment_image_src( $profile_image_id, 'square-400' );
+							echo '<img src="' . $profile_image_array[0] . '" alt="" />';
+						}
+						else {
+							echo '<img src="//placehold.it/400x400/eee/ccc/&text=.." alt="" />';
+						}
+						?>
+					</div>
+					<div class="info">
+						<div class="title">
+							<?php
+							if ( $first_name && $last_name ) {
+								echo '<a target="_blank" href="' . $author_profile_url . '">' . $first_name . ' ' . $last_name . '</a>';
+							}
+							elseif ($first_name){
+								echo '<a target="_blank" href="' . $author_profile_url . '">' . $first_name . '</a>';
+							}
+							?>
+						</div>
+						<?php if ( $jobdescription ) : ?><div class="desc"><?php echo $jobdescription; ?></div><?php endif; ?>
+						<?php if ( $email && $realty_theme_option['show-agent-email']  ) : ?><div class="desc"><a href="mailto:<?php echo antispambot( $email ); ?>"><?php echo antispambot( $email ); ?></a></div><?php endif; ?>
+						<?php if ( $office && $realty_theme_option['show-agent-office'] ) : ?><div class="desc"><?php echo $office; ?></div><?php endif; ?>
+						<?php if ( $mobile && $realty_theme_option['show-agent-mobile'] ) : ?><div class="desc"><?php echo $mobile; ?></div><?php endif; ?>
+					</div>
+					<?php if(!$no_socials) : ?>
+					<div class="bottom">
+						<?php if (!empty($twitter)) : ?>
+						<a class="btn btn-primary btn-twitter btn-sm" href="<?php print $twitter; ?>">
+							<i class="fa fa-twitter"></i>
+						</a>
+						<?php endif; ?>
+						<?php if (!empty($google)) : ?>
+						<a class="btn btn-danger btn-sm" rel="publisher" href="<?php print $google; ?>">
+							<i class="fa fa-google-plus"></i>
+						</a>
+						<?php endif; ?>
+						<?php if (!empty($facebook)) : ?>
+						<a class="btn btn-primary btn-sm" rel="publisher"
+						   href="<?php print $facebook; ?>">
+							<i class="fa fa-facebook"></i>
+						</a>
+						<?php endif; ?>
+						<?php if (!empty($linkedin)) : ?>
+						<a class="btn btn-warning btn-sm" rel="publisher" href="<?php print $linkedin; ?>">
+							<i class="fa fa-linkedin"></i>
+						</a>
+						<?php endif; ?>
+					</div>
+					<?php endif; ?>
 				</div>
+
 			</div>
-		</div>
-		<?php } ?>
-		</div><!-- .owl-carousel -->
+		<?php endforeach; //End Agent loop ?>
+	</div> <!-- row -->
 <?php
 		return ob_get_clean();
 
@@ -364,6 +391,12 @@ return ob_get_clean();
 	}
 add_shortcode('vessel_listing', 'tw_vessel_listing');
 
+/**
+ * Implements tw_equipment_listing.
+ * @param $atts
+ * @param null $content
+ * @return string
+ */
 function tw_equipment_listing( $atts, $content = null ) {
 	global $realty_theme_option;
 	$listing_view = $realty_theme_option['property-listing-default-view'];
@@ -894,9 +927,17 @@ return ob_get_clean();
 }
 add_shortcode('car_listing', 'tw_car_listing');
 
-
 function topwaves_mime_types($mimes) {
 	$mimes['svg'] = 'image/svg+xml';
 	return $mimes;
 }
 add_filter('upload_mimes', 'topwaves_mime_types');
+
+
+function modify_contact_methods($profile_fields) {
+
+	// Add new fields
+	$profile_fields['jobdescription'] = 'Job Description';
+	return $profile_fields;
+}
+add_filter('user_contactmethods', 'modify_contact_methods');

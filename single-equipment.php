@@ -5,7 +5,13 @@ global $realty_theme_option;
 $hide_sidebar = get_post_meta( $post->ID, 'estate_page_hide_sidebar', true );
 
 // Equipment Information.
+$equipment_price_prefix = get_field('equipment_price_prefix');
+$equipment_price = get_field('equipment_price');
+$equipment_price_suffix = get_field('equipment_price_suffix');
 $equipment_location = get_field('equipment_location');
+$equipment_type = get_field('equipment_type');
+$equipment_gallery = get_field('estate_property_gallery');
+
 
 // Reusing relestate logic
 $social_sharing = $realty_theme_option['property-social-sharing'];
@@ -83,7 +89,7 @@ if ( $single_property_layout == "theme_option_setting" || $single_property_layou
 
 
         // Check if property header has no background video and image
-        /*
+
         if ( ( $property_image_location == 'begin' && $property_video_location == 'begin' ) || ( $property_image_location == 'begin' && $property_video_location == 'above' && ( $property_video_provider == 'none' || ! $property_video_id ) ) ) {
             $property_header_media_class = ' no-media';
         } else {
@@ -105,40 +111,22 @@ if ( $single_property_layout == "theme_option_setting" || $single_property_layou
                 break;
             }
         }
-*/
         ?>
 
         <div class="container">
             <div class="property-meta primary-tooltips">
                 <div class="row">
-                    <?php if($vessel_length) : ?>
+                    <?php if($equipment_type) : ?>
                         <div class="col-sm-4 col-md-3">
                             <div class="meta-title"><i class="fa fa-expand"></i></div>
-                            <div class="meta-data" data-toggle="tooltip" title="" data-original-title="<?php _e( 'Size', 'tt' ); ?>"><?php print $vessel_length; ?></div>
+                            <div class="meta-data" data-toggle="tooltip" title="" data-original-title="<?php _e( 'Size', 'tt' ); ?>">
+								<?php print $equipment_type[0]->name; ?></div>
                         </div>
                     <?php endif; ?>
 
-                    <?php if($vessel_location) : ?>
-                        <div class="col-sm-4 col-md-3">
-                            <div class="meta-title"><i class="fa fa-map-o"></i></div>
-                            <div class="meta-data" data-toggle="tooltip" title="" data-original-title="<?php _e( 'Location', 'tt' ); ?>"><?php print $vessel_location['address']; ?></div>
-                        </div>
-                    <?php endif; ?>
-                    <?php if($vessel_built) : ?>
-                        <div class="col-sm-4 col-md-3">
-                            <div class="meta-title"><i class="fa fa-calendar-o"></i></div>
-                            <div class="meta-data" data-toggle="tooltip" title="" data-original-title="<?php _e('Built'); ?>"><?php print $vessel_built; ?></div>
-                        </div>
-                    <?php endif; ?>
-                    <?php if($vessel_material) : ?>
-                        <div class="col-sm-4 col-md-3">
-                            <div class="meta-title"><i class="fa fa-wrench"></i></div>
-                            <div class="meta-data" data-toggle="tooltip" title="" data-original-title="<?php _e('Building Material'); ?>"><?php print $vessel_material; ?></div>
-                        </div>
-                    <?php endif; ?>
                     <div class="col-sm-4 col-md-3">
                         <div class="meta-title"><i class="fa fa-slack"></i></div>
-                        <div class="meta-data" data-toggle="tooltip" title="<?php _e( 'Property ID', 'tt' ); ?>"><?php echo $post->ID; ?></div>
+                        <div class="meta-data" data-toggle="tooltip" title="<?php _e( 'Equipment ID' ); ?>"><?php echo $post->ID; ?></div>
                     </div>
                     <?php if ( ! $realty_theme_option['property-meta-data-hide-print'] ) : ?>
                         <div class="col-sm-4 col-md-3">
