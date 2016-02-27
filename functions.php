@@ -47,7 +47,7 @@ function tw_agents( $atts, $content = null ) {
 		$google = get_user_meta( $agent, 'custom_google', true );
 		$linkedin = get_user_meta( $agent, 'custom_linkedin', true );
 
-		if ( $facebook || $twitter || $google || $linkedin ) {
+		if ( $facebook || $twitter || $google || $linkedin || $website) {
 			$no_socials = false;
 		} else {
 			$no_socials = true;
