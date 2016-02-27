@@ -108,8 +108,8 @@ function tw_agents( $atts, $content = null ) {
 							<i class="fa fa-linkedin"></i>
 						</a>
 						<?php endif; ?>
-						<?php if (!empty($website_clean)) : ?>
-							<a class="btn btn-warning btn-sm" rel="publisher" href="<?php print $website_clean; ?>">
+						<?php if (!empty($website)) : ?>
+							<a class="btn btn-warning btn-sm" rel="publisher" href="<?php print $website; ?>">
 								<i class="fa fa-link"></i>
 							</a>
 						<?php endif; ?>

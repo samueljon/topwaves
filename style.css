@@ -7278,10 +7278,9 @@ https://wordpress.org/plugins/wordpress-social-login/
   border-radius: 50%;
   width: 32px;
   height: 32px;
-  line-height: 18px;
 }
 
-/* line 288, assets/scss/_topwaves.scss */
+/* line 287, assets/scss/_topwaves.scss */
 .card-comments .media-heading {
   font-size: 13px;
   font-weight: bold;
