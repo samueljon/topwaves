@@ -376,7 +376,11 @@ if ($single_property_layout == "theme_option_setting" || $single_property_layout
 									<?php if (!empty($car_price)) : ?>
 										<div class="col-md-3">
 											<h6 class="tinfo"><?php _e('Price'); ?></h6>
-											<p class="tinfotext"><?php echo $car_price_prefix . ' ' . number_format_i18n($car_price) . ' ' . $car_price_suffix; ?></p>
+											<?php if($car_price == '-1' ) : ?>
+												<p class="tinfotext">Price Upon Request</p>
+											<?php else : ?>
+												<p class="tinfotext"><?php echo $car_price_prefix . ' ' . number_format_i18n($car_price) . ' ' . $car_price_suffix; ?></p>
+											<?php endif; ?>
 										</div>
 									<?php endif; ?>
 								</div>

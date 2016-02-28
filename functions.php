@@ -932,13 +932,23 @@ return ob_get_clean();
 }
 add_shortcode('car_listing', 'tw_car_listing');
 
+/**
+ * Implements support for svg images in wordpress.
+ * @param $mimes
+ * @return mixed
+ */
 function topwaves_mime_types($mimes) {
 	$mimes['svg'] = 'image/svg+xml';
 	return $mimes;
 }
 add_filter('upload_mimes', 'topwaves_mime_types');
 
-
+/**
+ * Adds field to user profile.
+ *
+ * @param $profile_fields
+ * @return mixed
+ */
 function modify_contact_methods($profile_fields) {
 
 	// Add new fields
