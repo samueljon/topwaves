@@ -7272,21 +7272,19 @@ https://wordpress.org/plugins/wordpress-social-login/
   padding: 0 20px;
   margin-bottom: 17px;
 }
-
-/* line 281, assets/scss/_topwaves.scss */
-.btn {
+/* line 279, assets/scss/_topwaves.scss */
+.card.hovercard .btn {
   border-radius: 50%;
   width: 32px;
   height: 32px;
 }
-
-/* line 287, assets/scss/_topwaves.scss */
-.card-comments .media-heading {
+/* line 285, assets/scss/_topwaves.scss */
+.card.hovercard .card-comments .media-heading {
   font-size: 13px;
   font-weight: bold;
 }
 
-/* line 292, assets/scss/_topwaves.scss */
+/* line 293, assets/scss/_topwaves.scss */
 .twsubmit {
   background-color: #134a6a;
 }
