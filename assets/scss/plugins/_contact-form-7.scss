@@ -21,6 +21,9 @@ div.wpcf7 {
 	input.wpcf7-not-valid, textarea.wpcf7-not-valid {
 		border-color: #e82c0c;
 	}
+    input.wpcf7-submit {
+	  background: $docker-blue;
+	}
 	.wpcf7-textarea {
 		height: 153px;
 	}

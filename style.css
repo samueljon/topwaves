@@ -5926,37 +5926,41 @@ div.wpcf7 input.wpcf7-not-valid, div.wpcf7 textarea.wpcf7-not-valid {
   border-color: #e82c0c;
 }
 /* line 24, assets/scss/plugins/_contact-form-7.scss */
+div.wpcf7 input.wpcf7-submit {
+  background: #134a6a;
+}
+/* line 27, assets/scss/plugins/_contact-form-7.scss */
 div.wpcf7 .wpcf7-textarea {
   height: 153px;
 }
-/* line 27, assets/scss/plugins/_contact-form-7.scss */
+/* line 30, assets/scss/plugins/_contact-form-7.scss */
 div.wpcf7 span.wpcf7-quiz-label {
   display: block;
 }
-/* line 30, assets/scss/plugins/_contact-form-7.scss */
+/* line 33, assets/scss/plugins/_contact-form-7.scss */
 div.wpcf7 span.wpcf7-not-valid-tip {
   display: block;
   margin-top: 10px;
   font-size: 0.9em;
   color: #e82c0c;
 }
-/* line 36, assets/scss/plugins/_contact-form-7.scss */
+/* line 39, assets/scss/plugins/_contact-form-7.scss */
 div.wpcf7 .wpcf7-response-output {
   margin: 0 0 30px;
   padding: 0;
   font-size: 0.9em;
 }
-/* line 41, assets/scss/plugins/_contact-form-7.scss */
+/* line 44, assets/scss/plugins/_contact-form-7.scss */
 div.wpcf7 .wpcf7-validation-errors {
   color: #e82c0c;
   border: none;
 }
-/* line 45, assets/scss/plugins/_contact-form-7.scss */
+/* line 48, assets/scss/plugins/_contact-form-7.scss */
 div.wpcf7 .wpcf7-mail-sent-ok {
   color: #45BF55;
   border: none;
 }
-/* line 49, assets/scss/plugins/_contact-form-7.scss */
+/* line 52, assets/scss/plugins/_contact-form-7.scss */
 div.wpcf7 .screen-reader-response {
   position: absolute;
   overflow: hidden;
@@ -5967,12 +5971,12 @@ div.wpcf7 .screen-reader-response {
   padding: 0;
   border: 0;
 }
-/* line 59, assets/scss/plugins/_contact-form-7.scss */
+/* line 62, assets/scss/plugins/_contact-form-7.scss */
 div.wpcf7 .wpcf7-form-control-wrap {
   display: block !important;
   margin-bottom: 1em;
 }
-/* line 63, assets/scss/plugins/_contact-form-7.scss */
+/* line 66, assets/scss/plugins/_contact-form-7.scss */
 div.wpcf7 br {
   display: none;
 }
@@ -7284,7 +7288,7 @@ https://wordpress.org/plugins/wordpress-social-login/
   font-weight: bold;
 }
 
-/* line 293, assets/scss/_topwaves.scss */
+/* line 294, assets/scss/_topwaves.scss */
 .twsubmit {
   background-color: #134a6a;
 }
