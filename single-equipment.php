@@ -5,50 +5,21 @@ global $realty_theme_option;
 $hide_sidebar = get_post_meta($post->ID, 'estate_page_hide_sidebar', true);
 
 // Equipments
-$eq_gallery = get_field('eq_gallery', $post->ID);
-$property_imagesGF = $eq_gallery;
 $property_images = get_post_meta($post->ID, 'eq_gallery', true);
 
 $eq_price_prefix = get_field('eq_price_prefix');
 $eq_price = get_field('eq_price');
 $eq_price_suffix = get_field('eq_price_suffix');
 $eq_location = get_field('eq_location');
-$eq_agent = get_field('eq_location');
+$google_maps = get_field('eq_location');
+$eq_agent = get_field('eq_agent');
 $eq_type = get_field('eq_type');
-
-
-// Car Variables
-$car_price_prefix = get_field('car_price_prefix');
-$car_price = get_field('car_price');
-$car_price_suffix = get_field('car_price_suffix');
-$car_location = get_field('car_location');
-$car_type = get_field('car_type');
-$car_make = get_field('car_make');
-$car_model = get_field('car_model');
-$car_year = get_field('car_year');
-$car_registration_date = get_field('car_registration_date');
-$car_odometer = get_field('car_odometer');
-$car_odometer_suffix = get_field('car_odometer_suffix');
-$car_next_inspection = get_field('car_next_inspection');
-$car_fuel_type = get_field('car_fuel_type');
-$car_engine_power_hp = get_field('car_engine_power_hp');
-$car_engine_power_kw = get_field('car_engine_power_kw');
-$car_engine_size_cc = get_field('car_engine_size_cc');
-$car_co2_emission = get_field('car_co2_emission');
-$car_tare_mass = get_field('car_tare_mass');
-$car_laden_mass = get_field('car_laden_mass');
-$car_transmission = get_field('car_transmission');
-$car_drive_type = get_field('car_drive_type');
-$car_color = get_field('car_color');
-$car_door_capacity = get_field('car_door_capacity');
-$car_seat_capacity = get_field('car_seat_capacity');
-$car_rim_material = get_field('car_rim_material');
 
 // Reusing relestate logic
 $social_sharing = $realty_theme_option['property-social-sharing'];
 $show_agent_information = $realty_theme_option['property-agent-information'];
 $if_show_agent_info = true;
-$agent = get_post_meta($post->ID, 'estate_property_custom_agent', true);
+$agent = get_post_meta($post->ID, 'eq_agent', true);
 $property_contact_information = get_post_meta($post->ID, 'estate_property_contact_information', true);
 $show_property_contact_form = $realty_theme_option['property-contact-form'];
 $property_image_location = $realty_theme_option['property-image-location'];
@@ -149,29 +120,12 @@ if ($single_property_layout == "theme_option_setting" || $single_property_layout
 		<div class="container">
 			<div class="property-meta primary-tooltips">
 				<div class="row">
-					<?php if ($car_type) : ?>
+					<?php if ($eq_type) : ?>
 						<div class="col-sm-4 col-md-3">
 							<div class="meta-title"><i class="fa fa-wrench"></i></div>
 							<div class="meta-data" data-toggle="tooltip" title=""
-								 data-original-title="<?php _e('Vehicle Type'); ?>">
-								<?php print $car_type[0]->name; ?></div>
-						</div>
-					<?php endif; ?>
-
-					<?php if ($car_make) : ?>
-						<div class="col-sm-4 col-md-3">
-							<div class="meta-title"><i class="fa fa-calendar-o"></i></div>
-							<div class="meta-data" data-toggle="tooltip" title=""
-								 data-original-title="<?php _e('Vehicle Make'); ?>">
-								<?php print $car_make[0]->name; ?></div>
-						</div>
-					<?php endif; ?>
-					<?php if ($car_model) : ?>
-						<div class="col-sm-4 col-md-3">
-							<div class="meta-title"><i class="fa fa-calendar-o"></i></div>
-							<div class="meta-data" data-toggle="tooltip" title=""
-								 data-original-title="<?php _e('Vehicle Model'); ?>">
-								<?php print $car_model[0]->name; ?></div>
+								 data-original-title="<?php _e('Equipment Type'); ?>">
+								<?php print $eq_type[0]->name; ?></div>
 						</div>
 					<?php endif; ?>
 					<div class="col-sm-4 col-md-3">
@@ -244,151 +198,23 @@ if ($single_property_layout == "theme_option_setting" || $single_property_layout
 								<?php endwhile; // end of the loop. ?>
 							</section>
 
-							<?php if($car_price_prefix || $car_price || $car_type || $car_make || $car_model ||
-								$car_year || $car_registration_date || $car_odometer || $car_next_inspection || $car_fuel_type ||
-								$car_engine_power_hp || $car_engine_power_kw || $car_engine_size_cc || $car_co2_emission ||
-								$car_tare_mass || $car_laden_mass || $car_transmission || $car_drive_type || $car_color ||
-								$car_door_capacity || $car_seat_capacity || $car_rim_material) : ?>
+							<?php if( $eq_price || $eq_type ) : ?>
 							<section id="property-features" class="primary-tooltips">
 								<h3 class="section-title"><span><?php _e('Properties'); ?></span></h3>
 								<div class="row">
-									<?php if (!empty($car_type)) : ?>
+									<?php if (!empty($eq_type)) : ?>
 										<div class="col-md-3">
-											<h6 class="tinfo"><?php _e('Vehicle Type'); ?></h6>
-											<p class="tinfotext"><?php echo $car_type[0]->name; ?></p>
+											<h6 class="tinfo"><?php _e('Equipment Type'); ?></h6>
+											<p class="tinfotext"><?php echo $eq_type[0]->name; ?></p>
 										</div>
 									<?php endif; ?>
-									<?php if (!empty($car_make)) : ?>
-										<div class="col-md-3">
-											<h6 class="tinfo"><?php _e('Vehicle Make'); ?></h6>
-											<p class="tinfotext"><?php echo $car_make[0]->name; ?></p>
-										</div>
-									<?php endif; ?>
-									<?php if (!empty($car_model)) : ?>
-										<div class="col-md-3">
-											<h6 class="tinfo"><?php _e('Vehicle Model'); ?></h6>
-											<p class="tinfotext"><?php echo $car_model[0]->name; ?></p>
-										</div>
-									<?php endif; ?>
-									<?php if (!empty($car_year)) : ?>
-										<div class="col-md-3">
-											<h6 class="tinfo"><?php _e('Manufacturing Year'); ?></h6>
-											<p class="tinfotext"><?php echo $car_year; ?></p>
-										</div>
-									<?php endif; ?>
-								</div>
-								<div class="row">
-									<?php if (!empty($car_engine_power_hp)) : ?>
-										<div class="col-md-3">
-											<h6 class="tinfo"><?php _e('Engine Power - HP'); ?></h6>
-											<p class="tinfotext"><?php echo $car_engine_power_hp; ?></p>
-										</div>
-									<?php endif; ?>
-									<?php if (!empty($car_engine_power_kw)) : ?>
-										<div class="col-md-3">
-											<h6 class="tinfo"><?php _e('Engine Power - Kw'); ?></h6>
-											<p class="tinfotext"><?php echo $car_engine_power_kw; ?></p>
-										</div>
-									<?php endif; ?>
-									<?php if (!empty($car_engine_size_cc)) : ?>
-										<div class="col-md-3">
-											<h6 class="tinfo"><?php _e('Engine Size in cc'); ?></h6>
-											<p class="tinfotext"><?php echo $car_engine_size_cc; ?></p>
-										</div>
-									<?php endif; ?>
-									<?php if (!empty($car_co2_emission)) : ?>
-										<div class="col-md-3">
-											<h6 class="tinfo"><?php _e('Co2 Emission'); ?></h6>
-											<p class="tinfotext"><?php echo $car_co2_emission; ?></p>
-										</div>
-									<?php endif; ?>
-								</div>
-								<div class="row">
-									<?php if (!empty($car_door_capacity)) : ?>
-										<div class="col-md-3">
-											<h6 class="tinfo"><?php _e('Door Capacity'); ?></h6>
-											<p class="tinfotext"><?php echo $car_door_capacity; ?></p>
-										</div>
-									<?php endif; ?>
-									<?php if (!empty($car_door_capacity)) : ?>
-										<div class="col-md-3">
-											<h6 class="tinfo"><?php _e('Seat Capacity'); ?></h6>
-											<p class="tinfotext"><?php echo $car_door_capacity; ?></p>
-										</div>
-									<?php endif; ?>
-									<?php if (!empty($car_tare_mass)) : ?>
-										<div class="col-md-3">
-											<h6 class="tinfo"><?php _e('Tare Mass'); ?></h6>
-											<p class="tinfotext"><?php echo $car_tare_mass; ?></p>
-										</div>
-									<?php endif; ?>
-									<?php if (!empty($car_laden_mass)) : ?>
-										<div class="col-md-3">
-											<h6 class="tinfo"><?php _e('Tare Mass'); ?></h6>
-											<p class="tinfotext"><?php echo $car_laden_mass; ?></p>
-										</div>
-									<?php endif; ?>
-								</div>
-								<div class="row">
-									<?php if (!empty($car_odometer)) : ?>
-										<div class="col-md-3">
-											<h6 class="tinfo"><?php _e('Odometer'); ?></h6>
-											<p class="tinfotext"><?php echo $car_odometer . ' ' . $car_odometer_suffix; ?></p>
-										</div>
-									<?php endif; ?>
-									<?php if (!empty($car_fuel_type)) : ?>
-										<div class="col-md-3">
-											<h6 class="tinfo"><?php _e('Fuel Type'); ?></h6>
-											<p class="tinfotext"><?php echo $car_fuel_type[0]->name; ?></p>
-										</div>
-									<?php endif; ?>
-									<?php if (!empty($car_transmission)) : ?>
-										<div class="col-md-3">
-											<h6 class="tinfo"><?php _e('Transmission'); ?></h6>
-											<p class="tinfotext"><?php echo $car_transmission; ?></p>
-										</div>
-									<?php endif; ?>
-									<?php if (!empty($car_drive_type)) : ?>
-										<div class="col-md-3">
-											<h6 class="tinfo"><?php _e('Wheel Drive'); ?></h6>
-											<p class="tinfotext"><?php echo $car_drive_type; ?></p>
-										</div>
-									<?php endif; ?>
-								</div>
-								<div class="row">
-									<?php if (!empty($car_color)) : ?>
-										<div class="col-md-3">
-											<h6 class="tinfo"><?php _e('Color'); ?></h6>
-											<div class="tcolor" style="background-color:<?php echo $car_color;?>"></div>
-										</div>
-									<?php endif; ?>
-									<?php if (!empty($car_next_inspection)) : ?>
-										<div class="col-md-3">
-											<h6 class="tinfo"><?php _e('Next Inspection'); ?></h6>
-											<p class="tinfotext"><?php echo $car_next_inspection; ?></p>
-										</div>
-									<?php endif; ?>
-									<?php if (!empty($car_registration_date)) : ?>
-										<div class="col-md-3">
-											<h6 class="tinfo"><?php _e('Registration Date'); ?></h6>
-											<p class="tinfotext"><?php echo $car_registration_date; ?></p>
-										</div>
-									<?php endif; ?>
-									<?php if (!empty($car_rim_material)) : ?>
-										<div class="col-md-3">
-											<h6 class="tinfo"><?php _e('Rim Material'); ?></h6>
-											<p class="tinfotext"><?php echo $car_rim_material; ?></p>
-										</div>
-									<?php endif; ?>
-								</div>
-								<div class="row">
-									<?php if (!empty($car_price)) : ?>
+									<?php if (!empty($eq_price)) : ?>
 										<div class="col-md-3">
 											<h6 class="tinfo"><?php _e('Price'); ?></h6>
-											<?php if($car_price == '-1' ) : ?>
+											<?php if($eq_price == '-1' ) : ?>
 												<p class="tinfotext">Price Upon Request</p>
 											<?php else : ?>
-												<p class="tinfotext"><?php echo $car_price_prefix . ' ' . number_format_i18n($car_price) . ' ' . $car_price_suffix; ?></p>
+												<p class="tinfotext"><?php echo $eq_price_prefix . ' ' . number_format_i18n($eq_price) . ' ' . $eq_price_suffix; ?></p>
 											<?php endif; ?>
 										</div>
 									<?php endif; ?>
@@ -396,31 +222,10 @@ if ($single_property_layout == "theme_option_setting" || $single_property_layout
 							</section>
 							<?php endif; ?>
 
-							<!--
-                    <section id="additional-details">
-                        <?php echo '<h3 class="section-title"><span>' . __('General Information') . '</span></h3>'; ?>
-                        -->
-							<!--
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active"><a href="#additional-0" aria-controls="additional-0" role="tab" data-toggle="tab">Additional information</a></li>
-                                <li role="presentation"><a href="#additional-1" aria-controls="additional-1" role="tab" data-toggle="tab">Public Transportation</a></li>
-                                <li role="presentation"><a href="#additional-2" aria-controls="additional-2" role="tab" data-toggle="tab">Neighborhood</a></li>
-                                <li role="presentation"><a href="#additional-3" aria-controls="additional-3" role="tab" data-toggle="tab">Air Quality</a></li>
-                            </ul>
-                            <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane active" id="additional-0">-</div>
-                                <div role="tabpanel" class="tab-pane" id="additional-1">-</div>
-                                <div role="tabpanel" class="tab-pane" id="additional-2">-</div>
-                                <div role="tabpanel" class="tab-pane" id="additional-3">-</div>
-                            </div>
-
-                        </section>
-                        -->
-
 							<?php
 							// Property Map
-							if ($car_location || $google_maps) {
-								get_template_part('lib/inc/template/google-map-single-car');
+							if ($eq_location || $google_maps) {
+								get_template_part('lib/inc/template/google-map-single-equipment');
 							}
 							?>
 
