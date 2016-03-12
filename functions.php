@@ -667,23 +667,30 @@ return ob_get_clean();
 }
 add_shortcode('equipment_listing', 'tw_equipment_listing');
 
+/**
+ * Car Listing Short Code.
+ *
+ * @param $atts
+ * @param null $content
+ * @return string
+ */
 function tw_car_listing( $atts, $content = null ) {
 	global $realty_theme_option;
 	$listing_view = $realty_theme_option['property-listing-default-view'];
-	extract( shortcode_atts( array(
-		'per_page'									=> '10',
-		'columns'										=> '',
-		'location'									=> '',
-		'status'										=> '',
-		'type'											=> '',
-		'features'									=> '',
-		'max_price'									=> '',
-		'min_rooms'									=> '',
-		'available_from'						=> '',
-		'view'											=> '',
-		'show_sorting_toggle_view' 	=> 'hide',
-		'sort_by'         					=> 'date-new',
-	), $atts ) );
+	extract(shortcode_atts(array(
+		'per_page' 		=> '10',
+		'columns' 		=> '',
+		'location' 		=> '',
+		'status' 		=> '',
+		'type' 			=> '',
+		'make' 			=> '',
+		'model' 		=> '',
+		'fuel' 			=> '',
+		'max_price'		=> '',
+		'view' 			=> '',
+		'show_sorting_toggle_view' => 'hide',
+		'sort_by' 		=> 'date-new',
+	), $atts));
 
 	ob_start();
 
@@ -719,22 +726,6 @@ function tw_car_listing( $atts, $content = null ) {
 ============================== */
 $tax_query = array();
 
-if ( $location ) {
-	$tax_query[]	= array(
-		'taxonomy' 	=> 'property-location',
-		'field' 		=> 'slug',
-		'terms'			=> $location
-	);
-}
-
-if ( $status ) {
-	$tax_query[]	= array(
-		'taxonomy' 	=> 'property-status',
-		'field' 		=> 'slug',
-		'terms'			=> $status
-	);
-}
-
 if ( $type ) {
 	$tax_query[]	= array(
 		'taxonomy' 	=> 'car_type',
@@ -743,12 +734,35 @@ if ( $type ) {
 	);
 }
 
-if ( $features ) {
+if ( $make ) {
 	$tax_query[]	= array(
-		'taxonomy' 	=> 'property-features',
+		'taxonomy' 	=> 'car_make',
 		'field' 		=> 'slug',
-		'terms'			=> explode( ',', $features ),
-		'operator'	=> 'AND'
+		'terms'			=> $make,
+	);
+}
+
+if ( $model ) {
+	$tax_query[]	= array(
+		'taxonomy' 	=> 'car_type',
+		'field' 		=> 'slug',
+		'terms'			=> $model,
+	);
+}
+
+if ( $fuel ) {
+	$tax_query[]	= array(
+		'taxonomy' 	=> 'car_fuel',
+		'field' 		=> 'slug',
+		'terms'			=> $fuel,
+	);
+}
+
+if ( $status ) {
+	$tax_query[]	= array(
+		'taxonomy' 	=> 'car_status',
+		'field' 		=> 'slug',
+		'terms'			=> $status,
 	);
 }
 
@@ -773,23 +787,6 @@ if( $max_price ) {
 	);
 }
 
-if( $min_rooms ) {
-	$meta_query[] = array(
-		'key' 			=> 'estate_property_rooms',
-		'value' 		=> $min_rooms,
-		'compare'		=> '>=',
-		'type' 			=> 'NUMERIC',
-	);
-}
-
-if( $available_from ) {
-	$meta_query[] = array(
-		'key' 			=> 'estate_property_available_from',
-		'value' 		=> $available_from,
-		'compare'		=> '<=',
-		'type' 			=> 'NUMERIC',
-	);
-}
 
 // Count Meta Queries + set their relation for search query
 $meta_count = count( $meta_query );
