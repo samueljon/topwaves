@@ -140,10 +140,7 @@ add_shortcode('twagents', 'tw_agents');
 			'location'									=> '',
 			'status'										=> '',
 			'type'											=> '',
-			'features'									=> '',
 			'max_price'									=> '',
-			'min_rooms'									=> '',
-			'available_from'						=> '',
 			'view'											=> '',
 			'show_sorting_toggle_view' 	=> 'hide',
 			'sort_by'         					=> 'date-new',
@@ -183,17 +180,9 @@ add_shortcode('twagents', 'tw_agents');
 ============================== */
 $tax_query = array();
 
-if ( $location ) {
-	$tax_query[]	= array(
-		'taxonomy' 	=> 'property-location',
-		'field' 		=> 'slug',
-		'terms'			=> $location
-	);
-}
-
 if ( $status ) {
 	$tax_query[]	= array(
-		'taxonomy' 	=> 'property-status',
+		'taxonomy' 	=> 'vessel_status',
 		'field' 		=> 'slug',
 		'terms'			=> $status
 	);
@@ -204,15 +193,6 @@ if ( $type ) {
 		'taxonomy' 	=> 'vessel_type',
 		'field' 		=> 'slug',
 		'terms'			=> $type
-	);
-}
-
-if ( $features ) {
-	$tax_query[]	= array(
-		'taxonomy' 	=> 'property-features',
-		'field' 		=> 'slug',
-		'terms'			=> explode( ',', $features ),
-		'operator'	=> 'AND'
 	);
 }
 
@@ -232,24 +212,6 @@ if( $max_price ) {
 	$meta_query[] = array(
 		'key' 			=> 'estate_property_price',
 		'value' 		=> $max_price,
-		'compare'		=> '<=',
-		'type' 			=> 'NUMERIC',
-	);
-}
-
-if( $min_rooms ) {
-	$meta_query[] = array(
-		'key' 			=> 'estate_property_rooms',
-		'value' 		=> $min_rooms,
-		'compare'		=> '>=',
-		'type' 			=> 'NUMERIC',
-	);
-}
-
-if( $available_from ) {
-	$meta_query[] = array(
-		'key' 			=> 'estate_property_available_from',
-		'value' 		=> $available_from,
 		'compare'		=> '<=',
 		'type' 			=> 'NUMERIC',
 	);
