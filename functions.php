@@ -131,28 +131,29 @@ add_shortcode('twagents', 'tw_agents');
 /*  Property Listing
 /*-----------------------------------------------------------------------------------*/
 
-	function tw_vessel_listing( $atts, $content = null ) {
-		global $realty_theme_option;
-		$listing_view = $realty_theme_option['property-listing-default-view'];
-		extract( shortcode_atts( array(
-			'per_page'									=> '10',
-			'columns'										=> '',
-			'location'									=> '',
-			'status'										=> '',
-			'type'											=> '',
-			'max_price'									=> '',
-			'view'											=> '',
-			'show_sorting_toggle_view' 	=> 'hide',
-			'sort_by'         					=> 'date-new',
-		), $atts ) );
+function tw_vessel_listing($atts, $content = null)
+{
+	global $realty_theme_option;
+	$listing_view = $realty_theme_option['property-listing-default-view'];
+	extract(shortcode_atts(array(
+		'per_page' => '10',
+		'columns' => '',
+		'location' => '',
+		'status' => '',
+		'type' => '',
+		'max_price' => '',
+		'view' => '',
+		'show_sorting_toggle_view' => 'hide',
+		'sort_by' => 'date-new',
+	), $atts));
 
-		ob_start();
+	ob_start();
 
-		// Property Sorting & View
-		if ( $show_sorting_toggle_view == 'show' ) {
-			echo tt_property_listing_sorting_and_view($sort_by);
-		}
-?>
+	// Property Sorting & View
+	if ($show_sorting_toggle_view == 'show') {
+		echo tt_property_listing_sorting_and_view($sort_by);
+	}
+	?>
 
 	<div id="property-items" class="show-compare<?php echo ' ' . $view; ?>"  data-view="<?php if ( isset( $listing_view ) && $view=='' ) { echo $listing_view; }?>">
 
@@ -207,7 +208,7 @@ $query_properties_args['tax_query'] = $tax_query;
 		/* META QUERIES:
 ============================== */
 $meta_query = array();
-
+/*
 if( $max_price ) {
 	$meta_query[] = array(
 		'key' 			=> 'estate_property_price',
@@ -216,7 +217,7 @@ if( $max_price ) {
 		'type' 			=> 'NUMERIC',
 	);
 }
-
+*/
 // Count Meta Queries + set their relation for search query
 $meta_count = count( $meta_query );
 if ( $meta_count > 1 ) {
@@ -375,7 +376,7 @@ function tw_equipment_listing( $atts, $content = null ) {
 		'type'											=> '',
 		'features'									=> '',
 		'max_price'									=> '',
-		'min_rooms'									=> '',
+		'display'									=> '',
 		'available_from'						=> '',
 		'view'											=> '',
 		'show_sorting_toggle_view' 	=> 'hide',
@@ -461,32 +462,14 @@ $query_properties_args['tax_query'] = $tax_query;
 ============================== */
 $meta_query = array();
 
-if( $max_price ) {
+if( $display ) {
 	$meta_query[] = array(
-		'key' 			=> 'estate_property_price',
-		'value' 		=> $max_price,
-		'compare'		=> '<=',
-		'type' 			=> 'NUMERIC',
+		'key' 			=> 'eq_display_category',
+		'value' 		=> $display,
+		'compare'		=> '=',
 	);
 }
 
-if( $min_rooms ) {
-	$meta_query[] = array(
-		'key' 			=> 'estate_property_rooms',
-		'value' 		=> $min_rooms,
-		'compare'		=> '>=',
-		'type' 			=> 'NUMERIC',
-	);
-}
-
-if( $available_from ) {
-	$meta_query[] = array(
-		'key' 			=> 'estate_property_available_from',
-		'value' 		=> $available_from,
-		'compare'		=> '<=',
-		'type' 			=> 'NUMERIC',
-	);
-}
 
 // Count Meta Queries + set their relation for search query
 $meta_count = count( $meta_query );
@@ -915,3 +898,87 @@ function modify_contact_methods($profile_fields) {
 	return $profile_fields;
 }
 add_filter('user_contactmethods', 'modify_contact_methods');
+
+
+// Property Price
+if ( ! function_exists( 'tw_property_price' ) ) {
+	function tw_property_price() {
+
+		global $post, $realty_theme_option;
+
+		if ( $post->post_type === 'equipment') {
+			$property_price = doubleval( get_post_meta( $post->ID, 'eq_price', true ) );
+			$property_price_prefix = get_post_meta( $post->ID, 'eq_price_prefix', true );
+			$property_price_suffix = get_post_meta( $post->ID, 'eq_price_suffix', true );
+		}
+		else if ($post->post_type === 'car') {
+			$property_price = doubleval( get_post_meta( $post->ID, 'car_price', true ) );
+			$property_price_prefix = get_post_meta( $post->ID, 'car_price_prefix', true );
+			$property_price_suffix = get_post_meta( $post->ID, 'car_price_suffix', true );
+		}
+		else {
+			$property_price = doubleval( get_post_meta( $post->ID, 'estate_property_price', true ) );
+			$property_price_prefix = get_post_meta( $post->ID, 'estate_property_price_prefix', true );
+			$property_price_suffix = get_post_meta( $post->ID, 'estate_property_price_suffix', true );
+		}
+		$currency_sign = $realty_theme_option['currency-sign'];
+		$currency_sign_position = $realty_theme_option['currency-sign-position'];
+		$price_thousands_separator = $realty_theme_option['price-thousands-separator'];
+		$price_prefix = $realty_theme_option['price-prefix'];
+		$price_suffix = $realty_theme_option['price-suffix'];
+
+		if ( $realty_theme_option['price-decimals'] ) {
+			$decimals = $realty_theme_option['price-decimals'];
+		}
+		else {
+			$decimals = 0;
+		}
+		$decimal_point = '.';
+
+		// Default Currency Sign "$"
+		if ( empty( $currency_sign ) ) {
+			$currency_sign = __( '$', 'tt' );
+		}
+
+		if ( !empty( $property_price ) ) {
+
+			if ( $property_price == -1 ) {
+				$output = __( 'Price Upon Request', 'tt' );
+			}
+
+			else if ( $property_price ) {
+
+				$output = '';
+
+				if ( $property_price_prefix ) {
+					$output .= $property_price_prefix . "&nbsp;";
+				} else if ( $price_prefix ) {
+					$output .= $price_prefix . "&nbsp;";
+				}
+
+				$formatted_price = number_format( $property_price, $decimals, $decimal_point, $price_thousands_separator );
+
+				if( $currency_sign_position == 'right' ) {
+					$output .= $formatted_price . $currency_sign;
+				} else {
+					$output .= $currency_sign . $formatted_price;
+				}
+
+				if ( $property_price_suffix ) {
+					$output .= $property_price_suffix;
+				} else if ( $price_suffix ) {
+					$output .= $price_suffix;
+				}
+
+			}
+
+			else {
+				$output = false;
+			}
+
+			return $output;
+
+		}
+
+	}
+}

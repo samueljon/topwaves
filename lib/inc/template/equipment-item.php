@@ -1,11 +1,11 @@
 <?php
 $property_type = get_the_terms( $post->ID, 'equipment_type' );
 $terms = get_the_terms( get_the_ID(), 'equipment_type');
-$property_status = get_the_terms( $post->ID, 'eq_status' );
+$property_status = get_the_terms( $post->ID, 'equipment_status' );
 $property_location = get_the_terms( $post->ID, 'eq_location' );
-$property_featured = get_post_meta( $post->ID, 'estate_property_featured', true );
-$property_status_update = get_post_meta( $post->ID, 'estate_property_status_update', true );
-$google_maps = get_post_meta( $post->ID, 'estate_property_google_maps', true );
+$property_featured = get_post_meta( $post->ID, 'eq_featured', true );
+$property_status_update = get_post_meta( $post->ID, 'eq_status_update', true );
+$google_maps = get_post_meta( $post->ID, 'eq_location', true );
 $address = '';
 if ( !tt_is_array_empty( $google_maps) ) {
 	$address = $google_maps['address'];
@@ -18,8 +18,8 @@ $bathrooms = get_post_meta( $post->ID, 'estate_property_bathrooms', true );
 $last_updated_on=date_i18n(get_option( 'date_format' ),strtotime($post->post_modified));
 
 // Minimal Information
-$vessel_location = get_field('estate_property_google_maps');
-$equipment_type = get_field('equipment_type');
+$vessel_location = get_field('eq_location');
+$equipment_type = get_the_terms( get_the_ID(), 'equipment_type');
 
 
 
@@ -278,7 +278,7 @@ global $realty_theme_option;
 				}
 				?>
 			<?php }	?>
-			<div class="price-tag"><?php echo tt_property_price(); ?></div>
+			<div class="price-tag"><?php echo tw_property_price(); ?></div>
 			<div class="clearfix"></div>
 		</div>
 	</div>

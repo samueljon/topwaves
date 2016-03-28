@@ -4,7 +4,7 @@ $property_status = get_the_terms( $post->ID, 'car_status' );
 $property_location = get_the_terms( $post->ID, 'car_location' );
 $property_featured = get_post_meta( $post->ID, 'estate_property_featured', true );
 $property_status_update = get_post_meta( $post->ID, 'estate_property_status_update', true );
-$google_maps = get_post_meta( $post->ID, 'estate_property_google_maps', true );
+$google_maps = get_post_meta( $post->ID, 'car_location', true );
 $address = '';
 if ( !tt_is_array_empty( $google_maps) ) {
 	$address = $google_maps['address'];
@@ -300,7 +300,7 @@ global $realty_theme_option;
 				}
 				?>
 			<?php }	?>
-			<div class="price-tag"><?php echo tt_property_price(); ?></div>
+			<div class="price-tag"><?php echo tw_property_price(); ?></div>
 			<div class="clearfix"></div>
 		</div>
 	</div>
