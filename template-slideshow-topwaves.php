@@ -121,6 +121,8 @@ jQuery('#template-slideshow').on('click', function() {
 });
 </script>
 
+<div class="container">
+
 <div id="template-slideshow" class="<?php echo $slideshow_height . ' ' . $slideshow_type; ?>">
 
 	<div class="spinner">
@@ -361,7 +363,7 @@ jQuery('#template-slideshow').on('click', function() {
 
 </div><!-- #template-slideshow -->
 
-<div class="container">
+
 
 	<div class="row">
 
