@@ -632,6 +632,7 @@ function tw_car_listing( $atts, $content = null ) {
 		'model' 		=> '',
 		'fuel' 			=> '',
 		'max_price'		=> '',
+		'display'		=> '',
 		'view' 			=> '',
 		'show_sorting_toggle_view' => 'hide',
 		'sort_by' 		=> 'date-new',
@@ -722,13 +723,22 @@ $query_properties_args['tax_query'] = $tax_query;
 		/* META QUERIES:
 ============================== */
 $meta_query = array();
-
+/*
 if( $max_price ) {
 	$meta_query[] = array(
 		'key' 			=> 'estate_property_price',
 		'value' 		=> $max_price,
 		'compare'		=> '<=',
 		'type' 			=> 'NUMERIC',
+	);
+}
+*/
+
+if( $display ) {
+	$meta_query[] = array(
+		'key' 			=> 'car_display_category',
+		'value' 		=> $display,
+		'compare'		=> '=',
 	);
 }
 
