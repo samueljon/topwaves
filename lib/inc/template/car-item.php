@@ -2,8 +2,8 @@
 $property_type = get_the_terms( $post->ID, 'car_type' );
 $property_status = get_the_terms( $post->ID, 'car_status' );
 $property_location = get_the_terms( $post->ID, 'car_location' );
-$property_featured = get_post_meta( $post->ID, 'estate_property_featured', true );
-$property_status_update = get_post_meta( $post->ID, 'estate_property_status_update', true );
+$property_featured = get_post_meta( $post->ID, 'car_featured', true );
+$property_status_update = get_post_meta( $post->ID, 'car_status_update', true );
 $google_maps = get_post_meta( $post->ID, 'car_location', true );
 $address = '';
 if ( !tt_is_array_empty( $google_maps) ) {
@@ -17,13 +17,9 @@ $bathrooms = get_post_meta( $post->ID, 'estate_property_bathrooms', true );
 $last_updated_on=date_i18n(get_option( 'date_format' ),strtotime($post->post_modified));
 
 // Minimal Information
-$vessel_length = get_field('vessel_length');
 $car_type = get_field('car_type');
 $car_make = get_field('car_make');
 $car_model = get_field('car_model');
-$vessel_location = get_field('estate_property_google_maps');
-$vessel_built = get_field('vessel_built');
-$vessel_material = get_field('vessel_material');
 
 global $realty_theme_option;
 ?>
