@@ -8,7 +8,7 @@
 
 function tw_agents( $atts, $content = null ) {
 	extract( shortcode_atts( array(
-		'columns'		=> '4',
+		'columns'		=> '3',
 		'order'			=> 'DESC',
 		'limit'         => '0',
 
@@ -25,8 +25,7 @@ function tw_agents( $atts, $content = null ) {
 	);
 	?>
 
-	<div class="row">
-	<?php foreach( $all_agents as $agent ) :
+	<?php foreach( $all_agents as $key => $agent ) :
 		$company_name = get_user_meta( $agent, 'company_name', true );
 		$first_name = get_user_meta( $agent, 'first_name', true );
 		$last_name = get_user_meta( $agent, 'last_name', true );
@@ -54,7 +53,10 @@ function tw_agents( $atts, $content = null ) {
 		}
 
 		?>
-			<div class="col-lg-3 col-sm-6">
+		<?php if($key == 0 || $key == 2 ) : ?>
+		<div class="row">
+		<?php endif; ?>
+			<div class="col-lg-4 col-sm-6">
 				<div class="card hovercard">
 					<div class="cardheader"></div>
 					<div class="avatar">
@@ -118,8 +120,11 @@ function tw_agents( $atts, $content = null ) {
 				</div>
 
 			</div>
+		<?php if($key == 2 || $key == 5) : ?>
+		</div> <!-- row -->
+		<?php endif; ?>
 		<?php endforeach; //End Agent loop ?>
-	</div> <!-- row -->
+
 <?php
 		return ob_get_clean();
 
