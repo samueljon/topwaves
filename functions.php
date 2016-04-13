@@ -21,7 +21,7 @@ function tw_agents( $atts, $content = null ) {
 		'fields' => 'ID',
 		'order' => 'ASC',
 		'orderby'=> 'registered',
-		'include' => array( 2, 4, 6, 11 ))
+		'include' => array( 2, 4, 6, 11, 12, 13 ))
 	);
 	?>
 
